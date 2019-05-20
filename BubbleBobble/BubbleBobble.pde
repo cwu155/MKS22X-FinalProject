@@ -1,3 +1,13 @@
+void setup(){ 
+  size(1000,600);
+  background(255);
+}
+
+void draw(){
+  Player a = new Player("name");
+  a.display();
+}
+  
 class Game{
   int lives;
   float time;
@@ -17,30 +27,21 @@ class Player{
   int lives,score,posX,posY,speed;
   ArrayList<Bubble> extendBubbles;
   String name;
-  PImage dragon = loadImage("bubblun.png");
+  PImage dragon;
   
   Player(String n){
+    dragon = loadImage("bubblun.png");
     name = n;
     lives = 3;
     score = 0;
-    posX = (int)random(20);
-    posY = (int)random(20);
+    posX = 0;
+    posY = height-50; //50 is size of dragon
     speed = 10;
-  }
-  
-  Player a = new Player("name");
-  
-  void setup(){ 
-    size(1000,800);
-  }
-  
-  void draw(){
-    background(255);
-    a.display();
+    extendBubbles = new ArrayList<Bubble>();
   }
   
   void display(){
-    dragon.resize(20,20);
-    image(dragon,poSX,posY);
+    dragon.resize(50,50);
+    image(dragon,posX,posY);
   }
 }
