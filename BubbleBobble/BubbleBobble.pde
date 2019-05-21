@@ -8,7 +8,7 @@ void setup(){
   bub = loadImage("bubblun.png");
   g = new Game();
   a = new Player("name",bub);
-  b = new Bubble(a.posX+50,a.posY+25,2);
+  b = new Bubble(a.posX+50,a.posY+25);
 }
 
 void draw(){
