@@ -11,10 +11,7 @@ float xPos, yPos;
   
    void display(){
      image(img, xPos, yPos, 50, 50); 
-     //ellipse(xPos,yPos,50,50);
    }
-    
-    
 }
 
 
@@ -28,8 +25,6 @@ void draw(){
   background(0);
   Player p = new Player(xPos, yPos);
   p.display();
-  
-  //ellipse(xPos,yPos,50,50);
 }
 
 void keyPressed(){

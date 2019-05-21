@@ -1,6 +1,9 @@
 PImage bub;
 Game g;
 Player a;
+PImage bub;
+Game g;
+Player a;
 Bubble b;
 void setup(){ 
   size(1000,600);
