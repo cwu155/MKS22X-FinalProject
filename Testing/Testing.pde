@@ -1,10 +1,7 @@
-static float xPos;
-static float yPos;
-float speed;
-
-class Player{
+float xPos, yPos;
+ 
+ class Player{
   PImage img;
-  float x,y;
   
   Player(float x, float y){
     img = loadImage("bub.png");
@@ -12,32 +9,40 @@ class Player{
     yPos = y;
   }
   
-  void display(){
-    image(img, xPos, yPos, 50, 50);
-  }
+   void display(){
+     image(img, xPos, yPos, 50, 50); 
+     //ellipse(xPos,yPos,50,50);
+   }
+    
     
 }
 
-void keyPressed(){
-  println(key);
-  println(xPos);
-  if (key == 'd'){
-    xPos += speed;
-  }
-  
-  if (key == 'a'){
-    xPos -= speed;
-  }
-}
 
 void setup(){
   size(600,600);
-  xPos = 50;
+  xPos = 50; 
   yPos = 50;
-  speed = 10;
 }
 
 void draw(){
-  Player p = new Player(xPos,yPos);
+  background(0);
+  Player p = new Player(xPos, yPos);
   p.display();
+  
+  //ellipse(xPos,yPos,50,50);
 }
+
+void keyPressed(){
+    if (key == 'd'){
+      xPos += 5;
+    }
+    if (key == 'a'){
+      xPos -= 5;
+    }
+    if (key == 'w'){
+      yPos -= 5;
+    }
+    if (key == 's'){
+      yPos += 5;
+    }
+ }
