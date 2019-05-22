@@ -1,43 +1,28 @@
-float xPos, yPos;
- 
- class Player{
-  PImage img;
-  
-  Player(float x, float y){
-    img = loadImage("bub.png");
-    xPos = x;
-    yPos = y;
-  }
-  
-   void display(){
-     image(img, xPos, yPos, 50, 50); 
-   }
-}
-
-
 void setup(){
   size(600,600);
-  xPos = 50; 
-  yPos = 50;
+  posX = 100; 
+  posY = 500;
+  up = false;
 }
 
 void draw(){
   background(0);
-  Player p = new Player(xPos, yPos);
+  Player p = new Player(posX, posY);
   p.display();
+  p.jump();
 }
 
 void keyPressed(){
-    if (key == 'd'){
-      xPos += 5;
+    if (key == 'd'){ //move right
+      speedX = 20;
+      posX += speedX;
     }
-    if (key == 'a'){
-      xPos -= 5;
-    }
-    if (key == 'w'){
-      yPos -= 5;
-    }
-    if (key == 's'){
-      yPos += 5;
+    if (key == 'a'){ //move left
+      speedX = -20;
+      posX += speedX;
+    }  
+    if (key == 'w'){ //trigger jump
+      reachedMax = false;
+      up = true;
     }
  }
