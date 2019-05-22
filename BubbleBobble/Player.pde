@@ -1,4 +1,4 @@
-class Player{
+class Player implements Displayable, Moveable{
   int lives,score,posX,posY,speed;
   ArrayList<Bubble> extendBubbles;
   String name;
@@ -35,5 +35,8 @@ class Player{
       b.display();
       b.move();
     }
+  }
+  
+  void move(){
   }
 }

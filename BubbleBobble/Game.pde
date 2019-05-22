@@ -1,4 +1,4 @@
-class Game{
+class Game implements Displayable{
   int level;
   float time;
   boolean running;

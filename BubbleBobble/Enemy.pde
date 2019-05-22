@@ -1,6 +1,22 @@
-class Enemy{
+class Enemy implements Displayable, Moveable{
   int posX, posY, speed;
+  PImage enemy;
   
-  Enemy(){
+  Enemy(int x, int y, PImage img){
+    posX = x;
+    posY = y;
+    speed = 10;
+    enemy = img;
+    enemy.resize(50,50);
   }
+  
+  void display(){
+    image(enemy,posX,posY);
+  }
+  
+  void move(){
+    
+  }
+  
+  
 }

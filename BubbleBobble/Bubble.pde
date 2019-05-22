@@ -1,4 +1,4 @@
-class Bubble{
+class Bubble implements Displayable, Moveable{
   int posX, posY, speed = 1;
   
   Bubble(int x, int y){
@@ -19,5 +19,9 @@ class Bubble{
       //else move up
       posY += -1*speed;
     }
+  }
+  
+  void keyPressed(){
+    move();
   }
 }
