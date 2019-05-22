@@ -6,4 +6,7 @@ class Item implements Displayable{
     posY = y;
     points = p;
   }
+  
+  void display(){
+  }
 }

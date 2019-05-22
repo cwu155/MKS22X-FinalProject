@@ -1,5 +1,5 @@
 class Bubble implements Displayable, Moveable{
-  int posX, posY, speed = 1;
+  float posX, posY, speed = 1;
 
   Bubble(float x, float y){
     posX = x;

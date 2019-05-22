@@ -7,15 +7,15 @@ ArrayList<Moveable> moveMe;
 ArrayList<Collideable> coll;
 
 void keyPressed(){
-    if (key == 'd'){ //move right
+    if (keyCode == RIGHT){ //move right
       speedX = 20;
       posX += speedX;
     }
-    if (key == 'a'){ //move left
+    if (keyCode == LEFT){ //move left
       speedX = -20;
       posX += speedX;
     }
-    if (key == 'w'){ //trigger jump
+    if (keyCode == UP){ //trigger jump
       reachedMax = false;
       up = true;
     }
@@ -32,7 +32,7 @@ void setup(){
 void draw(){
   g.display();
   a.display();
-  a.jump();
+  a.move();
   b.display();
   b.move();
   //level + score
