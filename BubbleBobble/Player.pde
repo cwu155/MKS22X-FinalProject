@@ -1,7 +1,7 @@
 float posX, posY, speedX, speedY;
 boolean up, reachedMax;
 
-class Player{
+class Player implements Displayable, Moveable{
  PImage img;
  ArrayList<Bubble> extendBubbles;
  int score, lives;

@@ -2,6 +2,9 @@ PImage bub;
 Game g;
 Player a;
 Bubble b;
+ArrayList<Displayable> displayMe;
+ArrayList<Moveable> moveMe;
+ArrayList<Collideable> coll;
 
 void keyPressed(){
     if (key == 'd'){ //move right
@@ -39,4 +42,16 @@ void draw(){
   text("Level: "+g.level,30,35);
   textAlign(RIGHT);
   text("Score: "+a.score,width-30,35);
+}
+
+interface Displayable{
+  void display();
+}
+
+interface Moveable{
+  void move();
+}
+
+interface Collideable{
+  boolean touching();
 }

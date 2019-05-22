@@ -1,4 +1,4 @@
-class Bubble{
+class Bubble implements Displayable, Moveable{
   float posX, posY, speed = 1;
   
   Bubble(float x, float y){
