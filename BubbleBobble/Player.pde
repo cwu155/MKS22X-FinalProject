@@ -8,7 +8,7 @@ class Player implements Displayable, Moveable{
 
 
  Player(float x, float y){
-   img = loadImage("bubblun.png");
+   img = loadImage("Images/bubblun.png");
    posX = x;
    posY = y;
    score = 0; lives = 3;

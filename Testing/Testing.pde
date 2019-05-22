@@ -23,7 +23,7 @@ void keyPressed(){
 void setup(){
   size(1000,600);
   background(255);
-  bub = loadImage("bubblun.png");
+  bub = loadImage("bub.png");
   g = new Game();
   a = new Player(800,500);
   b = new Bubble(a.getX()+50,a.getY()+25);
