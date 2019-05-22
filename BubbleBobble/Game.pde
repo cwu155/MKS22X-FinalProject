@@ -2,19 +2,19 @@ class Game implements Displayable{
   int level;
   float time;
   boolean running;
-  
+
   Game(){
     level = 0;
     running = true;
     time = millis()/1000;
   }
-  
+
   Game (int i){
     level = i;
     running = true;
     time = millis()/1000;
   }
-  
+
   void display(){
     if(level == 0){
       background(255,192,203);
@@ -34,5 +34,5 @@ class Game implements Displayable{
       rect(180,450,640,20);
     }
   }
-  
+
 }

@@ -1,16 +1,16 @@
 class Bubble implements Displayable, Moveable{
   int posX, posY, speed = 1;
-  
-  Bubble(int x, int y){
+
+  Bubble(float x, float y){
     posX = x;
     posY = y;
   }
-  
+
   void display(){
     fill(0,255,0);
     ellipse(posX,posY,25,25);
   }
-  
+
   void move(){
     //if within length of map, moves left or right
     if(posX < width-30-25 && posX > 30){
@@ -20,7 +20,7 @@ class Bubble implements Displayable, Moveable{
       posY += -1*speed;
     }
   }
-  
+
   void keyPressed(){
     move();
   }

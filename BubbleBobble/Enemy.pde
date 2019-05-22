@@ -1,7 +1,7 @@
 class Enemy implements Displayable, Moveable{
   int posX, posY, speed;
   PImage enemy;
-  
+
   Enemy(int x, int y, PImage img){
     posX = x;
     posY = y;
@@ -9,14 +9,4 @@ class Enemy implements Displayable, Moveable{
     enemy = img;
     enemy.resize(50,50);
   }
-  
-  void display(){
-    image(enemy,posX,posY);
-  }
-  
-  void move(){
-    
-  }
-  
-  
 }

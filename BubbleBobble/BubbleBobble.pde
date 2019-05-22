@@ -1,35 +1,40 @@
+PImage bub;
+Game g;
+Player a;
+Bubble b;
 ArrayList<Displayable> displayMe;
 ArrayList<Moveable> moveMe;
 ArrayList<Collideable> coll;
-PImage bub;
-PImage ene;
-Game g;
-Player p;
-Bubble b;
-Enemy e;
-Item i;
-void setup(){ 
+
+void keyPressed(){
+    if (key == 'd'){ //move right
+      speedX = 20;
+      posX += speedX;
+    }
+    if (key == 'a'){ //move left
+      speedX = -20;
+      posX += speedX;
+    }
+    if (key == 'w'){ //trigger jump
+      reachedMax = false;
+      up = true;
+    }
+ }
+void setup(){
   size(1000,600);
   background(255);
   bub = loadImage("bubblun.png");
-  ene = loadImage("enemy1.gif");
   g = new Game();
-  p = new Player("name",bub);
-  b = new Bubble(a.posX+50,a.posY+25);
-  e = new Enemy(width/2,50,ene);
-  ArrayList<Displayable> displayMe;
-  ArrayList<Moveable> moveMe;
-  ArrayList<Collideable> coll;
+  a = new Player(800,500);
+  b = new Bubble(a.getX()+50,a.getY()+25);
 }
 
 void draw(){
   g.display();
-  p.display();
-  e.display();
+  a.display();
+  a.jump();
   b.display();
-  b.move();  
-  e.move();
-  p.move();
+  b.move();
   //level + score
   fill(0,0,0);
   textSize(25);
@@ -44,9 +49,9 @@ interface Displayable{
 }
 
 interface Moveable{
-  void display();
+  void move();
 }
 
 interface Collideable{
   boolean touching();
-}
+} 
