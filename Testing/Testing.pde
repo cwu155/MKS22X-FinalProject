@@ -1,11 +1,8 @@
 float posX, posY;
 float speedX, speedY;
-float gravity = 0.1;
-boolean left,right,up,down;
-boolean reachedMax;
+boolean up;
+boolean reachedMax; 
 
-
- 
 class Player{
  PImage img;
   
@@ -30,10 +27,8 @@ class Player{
      if (reachedMax){
        speedY = 5;
        if (posY > 500){speedY = 0;}
-     }
-       
+     }       
      posY += speedY;
-     speedY += gravity;    
    }
   }
 }
@@ -43,7 +38,7 @@ void setup(){
   size(600,600);
   posX = 100; 
   posY = 500;
-  left = false; right = false; up = false; down = false;
+  up = false;
 }
 
 void draw(){
@@ -63,6 +58,7 @@ void keyPressed(){
       posX += speedX;
     }  
     if (key == 'w'){ //trigger jump
+      reachedMax = false;
       up = true;
     }
  }
