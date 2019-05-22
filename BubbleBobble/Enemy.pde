@@ -3,4 +3,10 @@ class Enemy implements Displayable, Moveable{
   
   Enemy(){
   }
+  
+  void display(){
+  }
+  
+  void move(){
+  }
 }
