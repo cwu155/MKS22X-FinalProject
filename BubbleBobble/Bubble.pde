@@ -1,7 +1,7 @@
 class Bubble{
-  int posX, posY, speed = 1;
+  float posX, posY, speed = 1;
   
-  Bubble(int x, int y){
+  Bubble(float x, float y){
     posX = x;
     posY = y;
   }

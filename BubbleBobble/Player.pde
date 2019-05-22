@@ -1,39 +1,45 @@
+float posX, posY, speedX, speedY;
+boolean up, reachedMax;
+
 class Player{
-  int lives,score,posX,posY,speed;
-  ArrayList<Bubble> extendBubbles;
-  String name;
-  PImage dragon;
+ PImage img;
+ ArrayList<Bubble> extendBubbles;
+ int score, lives;
+ 
+
+ Player(float x, float y){
+   img = loadImage("bubblun.png");
+   posX = x;
+   posY = y;
+   score = 0; lives = 3;
+   extendBubbles = new ArrayList<Bubble>();
+ }
+ 
+ float getX(){
+   return posX;
+ }
+ 
+ float getY(){
+   return posY;
+ }
   
-  Player(String n, PImage img){
-    dragon = img;
-    dragon.resize(50,50);
-    name = n;
-    lives = 3;
-    score = 0;
-    posX = 30;
-    posY = height-50-20;
-    speed = 10;
-    extendBubbles = new ArrayList<Bubble>();
-  }
-  
-  void display(){
-    image(dragon,posX,posY);
-  }
-  
-  void keyPressed(){
-    if(key == 'a'){
-      posY -= speed;
-    }
-    if(keyCode == LEFT){
-      posX -= speed;
-    }
-    if(keyCode == RIGHT){
-      posX += speed;
-    }
-    if(key == 'a'){
-      Bubble b = new Bubble(a.posX+50,a.posY+25);
-      b.display();
-      b.move();
-    }
-  }
+ void display(){
+   image(img, posX, posY, 50, 50); 
+ }
+ 
+ void jump(){
+   if (up){
+     speedY = -10; //speedY determines how quick Bub's jump is
+
+     if (posY == 300){ //replace 300 with how far you want Bub to jump
+       speedY = 0;
+       reachedMax = true; //you reached the height of your jump, go back down!
+     }
+     if (reachedMax){
+       speedY = 10;
+       if (posY > 500){speedY = 0;} //replace 500 for where the yCor of the floor is
+     }       
+     posY += speedY;
+   }
+  } 
 }
