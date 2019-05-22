@@ -1,30 +1,33 @@
-float posX, posY;
-float speedX, speedY;
-boolean up;
-boolean reachedMax; //helps with the jump method
+float posX, posY, speedX, speedY;
+boolean up, reachedMax;
 
-class Player{
+class Player implements Displayable, Moveable{
  PImage img;
-  
+ ArrayList<Bubble> extendBubbles;
+ int score, lives;
+
+
  Player(float x, float y){
    img = loadImage("bub.png");
    posX = x;
    posY = y;
+   score = 0; lives = 3;
+   extendBubbles = new ArrayList<Bubble>();
  }
- 
+
  float getX(){
    return posX;
  }
- 
+
  float getY(){
    return posY;
  }
-  
+
  void display(){
-   image(img, posX, posY, 50, 50); 
+   image(img, posX, posY, 50, 50);
  }
- 
- void jump(){
+
+ void move(){
    if (up){
      speedY = -10; //speedY determines how quick Bub's jump is
 
@@ -35,7 +38,7 @@ class Player{
      if (reachedMax){
        speedY = 10;
        if (posY > 500){speedY = 0;} //replace 500 for where the yCor of the floor is
-     }       
+     }
      posY += speedY;
    }
   }
