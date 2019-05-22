@@ -27,7 +27,7 @@ class Player implements Displayable, Moveable{
    image(img, posX, posY, 50, 50);
  }
 
- void jump(){
+ void move(){
    if (up){
      speedY = -10; //speedY determines how quick Bub's jump is
 
