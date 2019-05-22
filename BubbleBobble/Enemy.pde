@@ -9,4 +9,10 @@ class Enemy implements Displayable, Moveable{
     enemy = img;
     enemy.resize(50,50);
   }
+  
+  void display(){
+  }
+  
+  void move(){
+  }
 }
