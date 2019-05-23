@@ -10,6 +10,24 @@ class Platform implements Displayable{
     pHeight = d;
   }
   
+  //Accessor methods
+  float getX(){
+    return posX;
+  }
+  
+  float getY(){
+    return posY;
+  }
+  
+  float getWidth(){
+    return pWidth;
+  }
+  
+  float getHeight(){
+    return pHeight;
+  }
+  
+  //Displays the platform as a rectangle (individual platforms are created in Game class)
   void display(){
     fill(255,192,203);
     noStroke();    

@@ -43,4 +43,10 @@ class Player implements Displayable, Moveable{
    }
   }
   
+ //boolean touching(){
+ //  for (int i = 0; i < platforms.size(); i++){
+ //    if (this.x
+ //}
+      
+  
 }

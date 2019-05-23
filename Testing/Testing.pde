@@ -6,6 +6,18 @@ ArrayList<Displayable> displayMe;
 ArrayList<Moveable> moveMe;
 ArrayList<Collideable> coll;
 
+interface Displayable{
+  void display();
+}
+
+interface Moveable{
+  void move();
+}
+
+interface Collideable{
+  boolean touching();
+} 
+
 void keyPressed(){
     if (keyCode == RIGHT){ //move right
       speedX = 20;
@@ -45,15 +57,3 @@ void draw(){
   textAlign(RIGHT);
   text("Score: "+a.score,width-30,35);
 }
-
-interface Displayable{
-  void display();
-}
-
-interface Moveable{
-  void move();
-}
-
-interface Collideable{
-  boolean touching();
-} 
