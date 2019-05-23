@@ -23,14 +23,16 @@ void keyPressed(){
 void setup(){
   size(1000,600);
   background(255);
-  bub = loadImage("bub.png");
+  bub = loadImage("../BubbleBobble/Images/bubblun.png");
   g = new Game();
-  a = new Player(800,500);
+  a = new Player(100,530);
   b = new Bubble(a.getX()+50,a.getY()+25);
+  
 }
 
 void draw(){
   g.display();
+  for(Platform p : platforms){p.display();}
   a.display();
   a.move();
   b.display();

@@ -8,7 +8,7 @@ class Player implements Displayable, Moveable{
 
 
  Player(float x, float y){
-   img = loadImage("bub.png");
+   img = loadImage("../BubbleBobble/Images/bubblun.png");
    posX = x;
    posY = y;
    score = 0; lives = 3;
@@ -29,17 +29,18 @@ class Player implements Displayable, Moveable{
 
  void move(){
    if (up){
-     speedY = -10; //speedY determines how quick Bub's jump is
+     speedY = -5; //speedY determines how quick Bub's jump is
 
-     if (posY == 300){ //replace 300 with how far you want Bub to jump
+     if (posY == 350){ //replace 400 with how far you want Bub to jump
        speedY = 0;
        reachedMax = true; //you reached the height of your jump, go back down!
      }
      if (reachedMax){
        speedY = 10;
-       if (posY > 500){speedY = 0;} //replace 500 for where the yCor of the floor is
+       if (posY >= 530){speedY = 0;} //replace 500 for where the yCor of the floor is
      }
      posY += speedY;
    }
   }
+  
 }
