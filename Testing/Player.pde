@@ -43,19 +43,23 @@ class Player implements Displayable, Moveable{
        reachedMax = true; //you reached the height of your jump, go back down!
      }
      if (reachedMax){
-       speedY = 10;
+       speedY = 5;
        if (posY >= 530){speedY = 0;} //replace 500 for where the yCor of the floor is
+     }
+     
+     for (Platform p : platforms){
+       if (touchingPlatform(p)){
+         speedY = 0;
+        }
      }
      posY += speedY;
    }
   }
-  
- boolean touchingPlatform(){
-   for (Platform p : platforms){
+
+ boolean touchingPlatform(Platform p){
      if ((this.getCenterY() + p.getHeight() == p.getCenterY())){
        println("help");
        return true;
-     }
    }
    return false;
  }

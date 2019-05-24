@@ -47,7 +47,7 @@ void draw(){
   for(Platform p : platforms){p.display();}
   a.display();
   a.move();
-  a.touchingPlatform();
+  //a.touchingPlatform();
   b.display();
   b.move();
   //level + score
