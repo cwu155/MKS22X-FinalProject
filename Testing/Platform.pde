@@ -27,6 +27,14 @@ class Platform implements Displayable{
     return pHeight;
   }
   
+  float getCenterX(){
+    return posX + pWidth/2;
+  }
+  
+  float getCenterY(){
+    return posY + pHeight/2;
+  }
+  
   //Displays the platform as a rectangle (individual platforms are created in Game class)
   void display(){
     fill(255,192,203);
