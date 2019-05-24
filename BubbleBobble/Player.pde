@@ -1,5 +1,5 @@
 float posX, posY, speedX, speedY;
-boolean up, reachedMax;
+boolean up,reachedMax;
 
 class Player implements Displayable, Moveable{
  PImage img;
@@ -12,7 +12,6 @@ class Player implements Displayable, Moveable{
    posX = x;
    posY = y;
    score = 0; 
-   
    lives = 3;
    extendBubbles = new ArrayList<Bubble>();
  }

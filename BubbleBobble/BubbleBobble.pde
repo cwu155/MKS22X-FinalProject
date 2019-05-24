@@ -7,23 +7,27 @@ ArrayList<Moveable> moveMe;
 ArrayList<Collideable> coll;
 
 void keyPressed(){
-    if (keyCode == RIGHT){ //move right
-      speedX = 20;
+  if (keyCode == RIGHT){ //move right
+    speedX = 10;
+    if(posX<=915){ // 1000-60-25 (half of bub)
       posX += speedX;
     }
-    if (keyCode == LEFT){ //move left
-      speedX = -20;
+  }
+  if (keyCode == LEFT){ //move leftt
+    speedX = -10;
+    if(posX>=40){
       posX += speedX;
     }
-    if (keyCode == UP){ //trigger jump
-      reachedMax = false;
-      up = true;
-    }
-    if(key == 'B' || key == 'b'){
-      b = new Bubble(a.getX()+50,a.getY()+25);
-      b.move();
-    }
- }
+  }
+  if (keyCode == UP){ //trigger jump
+    reachedMax = false;
+    up = true;
+  }
+  if(key == 'B' || key == 'b'){
+    b = new Bubble(a.getX()+50,a.getY()+25);
+    b.move();
+  }
+}
 void setup(){
   size(1000,600);
   background(255);
