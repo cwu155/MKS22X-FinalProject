@@ -19,13 +19,17 @@ void keyPressed(){
       reachedMax = false;
       up = true;
     }
+    if(key == 'B' || key == 'b'){
+      b = new Bubble(a.getX()+50,a.getY()+25);
+      b.move();
+    }
  }
 void setup(){
   size(1000,600);
   background(255);
   bub = loadImage("Images/bubblun.png");
   g = new Game();
-  a = new Player(800,500);
+  a = new Player(30,height-50-20);
   b = new Bubble(a.getX()+50,a.getY()+25);
 }
 

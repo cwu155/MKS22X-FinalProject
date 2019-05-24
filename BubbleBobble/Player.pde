@@ -11,7 +11,9 @@ class Player implements Displayable, Moveable{
    img = loadImage("Images/bubblun.png");
    posX = x;
    posY = y;
-   score = 0; lives = 3;
+   score = 0; 
+   
+   lives = 3;
    extendBubbles = new ArrayList<Bubble>();
  }
 
@@ -41,5 +43,6 @@ class Player implements Displayable, Moveable{
      }
      posY += speedY;
    }
+   
   }
 }
