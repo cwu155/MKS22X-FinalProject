@@ -57,8 +57,7 @@ class Player implements Displayable, Moveable{
   }
 
  boolean touchingPlatform(Platform p){
-     if ((this.getCenterY() + p.getHeight() == p.getCenterY())){
-       println("help");
+     if ((this.getCenterY() + p.getHeight() == p.getCenterY() - p.getHeight()/2 - 5)){
        return true;
    }
    return false;
