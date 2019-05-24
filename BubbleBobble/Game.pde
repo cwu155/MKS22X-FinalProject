@@ -26,9 +26,11 @@ class Game implements Displayable{
       rect(30,250,100,20);
       rect(30,350,100,20);
       rect(30,450,100,20);
+      //right rectangles
       rect(width-30-100,250,100,20);
       rect(width-30-100,350,100,20);
       rect(width-30-100,450,100,20);
+      //middle rectangles
       rect(180,250,640,20);
       rect(180,350,640,20);
       rect(180,450,640,20);
