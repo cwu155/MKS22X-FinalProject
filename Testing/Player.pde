@@ -6,7 +6,6 @@ class Player implements Displayable, Moveable{
  ArrayList<Bubble> extendBubbles;
  int score, lives;
 
-
  Player(float x, float y){
    img = loadImage("../BubbleBobble/Images/bubblun.png");
    posX = x;
@@ -21,6 +20,14 @@ class Player implements Displayable, Moveable{
 
  float getY(){
    return posY;
+ }
+ 
+ float getCenterX(){
+   return posX + 25; //25 is the width/2
+ }
+ 
+ float getCenterY(){
+   return posY + 25; //25 is the height/2
  }
 
  void display(){
@@ -43,10 +50,23 @@ class Player implements Displayable, Moveable{
    }
   }
   
- //boolean touching(){
- //  for (int i = 0; i < platforms.size(); i++){
- //    if (this.x
+ //boolean touchingPlatform(){
+ //  for (Platform p : platforms){
+ //    if (
  //}
+  
+ boolean touching(){
+   for(Platform platform : platforms){
+     if(
+     (dist(posX, posY, platform.getX(), platform.getY()) <= 50) &&
+     (dist(posX + 50, posY, platform.getX() + platform.getWidth(), platform.getY()) <= 50)
+     ){
+          println("Hi");
+          return true;
+        }
+   }
+   return false;
+ }
       
   
 }
