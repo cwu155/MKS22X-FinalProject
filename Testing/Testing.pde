@@ -37,7 +37,7 @@ void setup(){
   background(255);
   bub = loadImage("../BubbleBobble/Images/bubblun.png");
   g = new Game();
-  a = new Player(100,530);
+  a = new Player(100,500);
   b = new Bubble(a.getX()+50,a.getY()+25);
   
 }
@@ -47,7 +47,7 @@ void draw(){
   for(Platform p : platforms){p.display();}
   a.display();
   a.move();
-  a.touchedPlatform();
+  a.touchingPlatform();
   b.display();
   b.move();
   //level + score

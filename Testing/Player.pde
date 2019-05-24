@@ -50,10 +50,15 @@ class Player implements Displayable, Moveable{
    }
   }
   
- //boolean touchingPlatform(){
- //  for (Platform p : platforms){
- //    if (
- //}
+ boolean touchingPlatform(){
+   for (Platform p : platforms){
+     if ((this.getCenterY() + p.getHeight() == p.getCenterY())){
+       println("help");
+       return true;
+     }
+   }
+   return false;
+ }
   
  boolean touching(){
    for(Platform platform : platforms){
