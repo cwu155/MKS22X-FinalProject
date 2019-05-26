@@ -90,11 +90,15 @@ class Player implements Displayable, Moveable{
   float diffX = (this.getX() + 25) - (p.getX() + p.getWidth()/2);
   float diffY = (this.getY() + 25) - (p.getY() + p.getHeight()/2);
   
+  //Minimum distances for the player/platform to collide
   float totalWidths = 25 + p.getWidth()/2;
   float totalHeights = 25 + p.getHeight()/2;
   
+  //Are the player and platform colliding? 
   if (Math.abs(diffX) < totalWidths){
-    if (Math.abs(diffY) < totalHeights){
+    if (Math.abs(diffY) < totalHeights){ //Yes, they are colliding!
+      
+      //The amount they're overlapping by
       float overlapX = totalWidths - Math.abs(diffX);
       float overlapY = totalHeights - Math.abs(diffY);
       
