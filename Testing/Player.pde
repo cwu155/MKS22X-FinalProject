@@ -39,15 +39,26 @@ class Player implements Displayable, Moveable{
  }
 
  void move(){
+   //Checks to see if Bub is touching any platform
    for (Platform p : platforms){
       touchingPlatform(p);
    }
    
-   if (posY >= 530){
+   //Bounds
+   if (posY >= 530){ //the ground
      speedY = 0;
      posY = 530;
    }
    
+   if (posX <= 30){ //the left wall
+     posX = 30;
+   }
+   
+   if (posX >= 920){ //the right wall (no idea why it's 920 and not 970)
+     posX = 920;
+   }
+   
+   //Vertical wrapping, Bub goes through ground & comes through top or vice versa
    if (posY == 0){ 
      posY = 600;
    }
@@ -56,18 +67,22 @@ class Player implements Displayable, Moveable{
      posY = 0;
    }
    
+   //If Bub touches platform, land on it
    if (touching){
      speedY = 0;
    }
    
+   //If Bub is in the air and not jumping, make him fall!
     if (!onGround() && !up){
-     speedY = 6;
+     speedY = 9;
    } 
    
+   //Trigger jump
    if (up){
-     speedY = -4; //speedY determines how quick Bub's jump is
+     speedY = -5; //speedY determines how quick Bub's jump is
    }     
    
+   //Change y position
    posY += speedY;
   }
  
@@ -85,7 +100,7 @@ class Player implements Displayable, Moveable{
       
       if (overlapX >= overlapY){
         if (diffY < 0){
-          posY -= overlapY;
+          posY -= (overlapY + 7); //the +7 is for graphics idk
           touching = true;
           p.changeColor(p);
         }
