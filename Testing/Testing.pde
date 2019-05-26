@@ -28,7 +28,6 @@ void keyPressed(){
       posX += speedX;
     }
     if (keyCode == UP){ //trigger jump
-      reachedMax = false;
       touching = false;
       up = true;
       println("Status:" + up);

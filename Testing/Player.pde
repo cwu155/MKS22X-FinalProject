@@ -1,5 +1,5 @@
 float posX, posY, speedX, speedY;
-boolean up, reachedMax, touching;
+boolean up, touching;
 
 class Player implements Displayable, Moveable{
  PImage img;
@@ -33,11 +33,22 @@ class Player implements Displayable, Moveable{
  void display(){
    image(img, posX, posY, 50, 50);
  }
+ 
+ boolean onGround(){
+   return (posY == 530);
+ }
 
  void move(){
-   collided();
+   for (Platform p : platforms){
+      touchingPlatform(p);
+   }
    
-   if (posY == 0){
+   if (posY >= 530){
+     speedY = 0;
+     posY = 530;
+   }
+   
+   if (posY == 0){ 
      posY = 600;
    }
    
@@ -45,48 +56,23 @@ class Player implements Displayable, Moveable{
      posY = 0;
    }
    
-   if (posY == 530){
+   if (touching){
      speedY = 0;
    }
    
-   if (touching){
-     println("Touched!!");
-       speedY = 0;
-     }
+    if (!onGround() && !up){
+     speedY = 6;
+   } 
+   
 
    if (up){
-     speedY = -5; //speedY determines how quick Bub's jump is
-     
-     //if (posY == 0){ //replace 400 with how far you want Bub to jump
-     //  speedY = 0;
-     //  reachedMax = true; //you reached the height of your jump, go back down!
-     // }
-      
-     //if (reachedMax){
-     //  speedY = 5;
-     //  if (posY >= 300){
-     //    speedY = 0;
-     //  } //replace 500 for where the yCor of the floor is
-     //}
-   }
-     
-     if (posY != 530 && !up && !touching){
-       speedY = 5;
-     }      
+     speedY = -4; //speedY determines how quick Bub's jump is
+   }     
    
    posY += speedY;
   }
-
- void collided(){
-   for (Platform platform : platforms){
-       if (touchingPlatform(platform)){
-         platform.changeColor(platform);
-         touching = true;
-        }
-      }
- }
  
- boolean touchingPlatform(Platform p){
+ void touchingPlatform(Platform p){
   float diffX = (this.getX() + 25) - (p.getX() + p.getWidth()/2);
   float diffY = (this.getY() + 25) - (p.getY() + p.getHeight()/2);
   
@@ -99,16 +85,14 @@ class Player implements Displayable, Moveable{
       float overlapY = totalHeights - Math.abs(diffY);
       
       if (overlapX >= overlapY){
-        if (diffY <= 0){
+        if (diffY < 0){
           posY -= overlapY;
-          return true;
-        } 
+          touching = true;
+          p.changeColor(p);
+        }
       }
     }
   }
-  return false;
  }
 
-      
-  
 }
