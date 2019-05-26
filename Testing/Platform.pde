@@ -41,7 +41,11 @@ class Platform implements Displayable{
     noStroke();    
     rect(posX, posY, pWidth, pHeight);
   }
-    
+  
+  //Testing purposes
+  void changeColor(Platform p){
+    fill(255,0,0);
+    rect(p.getX(), p.getY(), p.getWidth(), p.getHeight()); 
   }
- 
+}
     

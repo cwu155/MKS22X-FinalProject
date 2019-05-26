@@ -28,9 +28,9 @@ class Game implements Displayable{
       Platform d = new Platform(width-30-100,250,100,20); platforms.add(d);
       Platform e = new Platform(width-30-100,350,100,20); platforms.add(e);
       Platform f = new Platform(width-30-100,450,100,20); platforms.add(f);
-      Platform g = new Platform(180,250,640,20); platforms.add(g);
-      Platform h = new Platform(180,350,640,20); platforms.add(h);
-      Platform i = new Platform(180,450,640,20); platforms.add(i);
+      Platform g = new Platform(180,250,600,20); platforms.add(g);
+      Platform h = new Platform(180,350,600,20); platforms.add(h);
+      Platform i = new Platform(180,450,600,20); platforms.add(i);
       
       //left rectangles
       //rect(30,250,100,20);
