@@ -8,19 +8,21 @@ ArrayList<Collideable> coll;
 
 void keyPressed(){
   if (keyCode == RIGHT){ //move right
-    speedX = 10;
+    speedX = 15;
     if(posX<=915){ // 1000-60-25 (half of bub)
       posX += speedX;
     }
+    img = loadImage("Images/bubblun.png");
   }
-  if (keyCode == LEFT){ //move leftt
-    speedX = -10;
+  if (keyCode == LEFT){ //move left
+    speedX = -15;
     if(posX>=40){
       posX += speedX;
     }
+    img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
   }
   if (keyCode == UP){ //trigger jump
-    reachedMax = false;
+    touching = false;
     up = true;
   }
   if(key == 'B' || key == 'b'){
@@ -28,6 +30,15 @@ void keyPressed(){
     b.move();
   }
 }
+
+void keyReleased(){
+    switch (keyCode){
+    case 38://up
+      up = false;
+      break;
+  }
+}
+
 void setup(){
   size(1000,600);
   background(255);
@@ -39,6 +50,7 @@ void setup(){
 
 void draw(){
   g.display();
+  for(Platform p : platforms){p.display();}
   a.display();
   a.move();
   b.display();
@@ -62,4 +74,4 @@ interface Moveable{
 
 interface Collideable{
   boolean touching();
-} 
+}
