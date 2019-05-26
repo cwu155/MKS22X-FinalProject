@@ -1,5 +1,5 @@
 float posX, posY, speedX, speedY;
-boolean up, reachedMax;
+boolean up, reachedMax, touching;
 
 class Player implements Displayable, Moveable{
  PImage img;
@@ -35,43 +35,42 @@ class Player implements Displayable, Moveable{
  }
 
  void move(){
+   collided();
+   
+   if (touching){
+     println("Touched!!");
+       speedY = 0;
+     }
+
    if (up){
      speedY = -5; //speedY determines how quick Bub's jump is
-
-     if (posY == 350){ //replace 400 with how far you want Bub to jump
+     
+     if (posY == 200){ //replace 400 with how far you want Bub to jump
        speedY = 0;
        reachedMax = true; //you reached the height of your jump, go back down!
      }
      if (reachedMax){
        speedY = 5;
-       if (posY >= 530){speedY = 0;} //replace 500 for where the yCor of the floor is
+       if (posY >= 300){speedY = 0;} //replace 500 for where the yCor of the floor is
      }
+          
      
-     for (Platform p : platforms){
-       if (touchingPlatform(p)){
-         speedY = 0;
-        }
-     }
-     posY += speedY;
    }
+   
+   posY += speedY;
   }
 
+ void collided(){
+   for (Platform platform : platforms){
+       if (touchingPlatform(platform)){
+         touching = true;
+        }
+      }
+ }
+ 
  boolean touchingPlatform(Platform p){
      if ((this.getCenterY() + p.getHeight() == p.getCenterY() - p.getHeight()/2 - 5)){
        return true;
-   }
-   return false;
- }
-  
- boolean touching(){
-   for(Platform platform : platforms){
-     if(
-     (dist(posX, posY, platform.getX(), platform.getY()) <= 50) &&
-     (dist(posX + 50, posY, platform.getX() + platform.getWidth(), platform.getY()) <= 50)
-     ){
-          println("Hi");
-          return true;
-        }
    }
    return false;
  }

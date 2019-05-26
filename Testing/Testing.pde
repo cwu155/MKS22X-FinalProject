@@ -29,9 +29,21 @@ void keyPressed(){
     }
     if (keyCode == UP){ //trigger jump
       reachedMax = false;
+      touching = false;
       up = true;
+      println("Status:" + up);
     }
  }
+ 
+ void keyReleased(){
+    switch (keyCode){
+    case 38://up
+      up = false;
+      break;
+  }
+}
+ 
+
 void setup(){
   size(1000,600);
   background(255);
