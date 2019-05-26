@@ -22,10 +22,15 @@ void keyPressed(){
     if (keyCode == RIGHT){ //move right
       speedX = 20;
       posX += speedX;
+      right = true;
+      img = loadImage("../BubbleBobble/Images/bubblun.png");
     }
     if (keyCode == LEFT){ //move left
       speedX = -20;
       posX += speedX;
+      left = true;
+      img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
+
     }
     if (keyCode == UP){ //trigger jump
       touching = false;

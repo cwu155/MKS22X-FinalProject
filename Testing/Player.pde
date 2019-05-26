@@ -1,8 +1,8 @@
 float posX, posY, speedX, speedY;
-boolean up, touching;
+boolean left, right, up, touching;
+PImage img, imgReverse;
 
 class Player implements Displayable, Moveable{
- PImage img;
  ArrayList<Bubble> extendBubbles;
  int score, lives;
 
@@ -31,7 +31,7 @@ class Player implements Displayable, Moveable{
  }
 
  void display(){
-   image(img, posX, posY, 50, 50);
+  image(img, posX, posY, 50, 50);
  }
  
  boolean onGround(){
@@ -64,7 +64,6 @@ class Player implements Displayable, Moveable{
      speedY = 6;
    } 
    
-
    if (up){
      speedY = -4; //speedY determines how quick Bub's jump is
    }     
