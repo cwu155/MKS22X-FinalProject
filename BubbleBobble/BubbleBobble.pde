@@ -21,13 +21,17 @@ void keyPressed(){
     }
     img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
   }
-  if (keyCode == UP){ //trigger jump
+  if (keyCode == UP){ //trigger jump 
     touching = false;
-    up = true;
-  }
+    if (posY >= 50){
+      up = true;
+    }
+   } 
+
   if(key == 'B' || key == 'b'){
-    b = new Bubble(a.getX()+50,a.getY()+25);
-    b.move();
+    //Bubble c = (new Bubble(a.getX()+50,a.getY()+25));
+    //bubbles.add(c);
+    spawn();
   }
 }
 
@@ -35,8 +39,7 @@ void keyReleased(){
     switch (keyCode){
     case 38://up
       up = false;
-      break;
-  }
+    }
 }
 
 void setup(){
@@ -53,8 +56,7 @@ void draw(){
   for(Platform p : platforms){p.display();}
   a.display();
   a.move();
-  b.display();
-  b.move();
+  for (Bubble b : bubbles){b.display(); b.move();}
   //level + score
   fill(0,0,0);
   textSize(25);
@@ -62,6 +64,12 @@ void draw(){
   text("Level: "+g.level,30,35);
   textAlign(RIGHT);
   text("Score: "+a.score,width-30,35);
+  
+  //Testing Purposes
+  textSize(20);
+  text("X: " + posX, 400, 35);
+  text("Y: " + posY, 500, 35);
+  text("SpeedY: " + speedY, 700, 35);
 }
 
 interface Displayable{

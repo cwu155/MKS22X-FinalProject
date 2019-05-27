@@ -1,3 +1,5 @@
+public static ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
+
 class Bubble implements Displayable, Moveable{
   float posX, posY, speed = 1;
 
@@ -20,8 +22,16 @@ class Bubble implements Displayable, Moveable{
       posY += -1*speed;
     }
   }
+ 
 
-  void keyPressed(){
-    move();
-  }
+  //void keyPressed(){
+  //  move();
+  //}
 }
+
+//Spawns a bubble, this is outside the Bubble class btw!!
+ void spawn(){
+    bubbles.add(new Bubble(a.getX()+50,a.getY()+25));
+    //println(bubbles.size());
+  }
+    

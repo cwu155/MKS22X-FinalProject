@@ -1,5 +1,5 @@
 float posX, posY, speedX, speedY;
-boolean up, touching;
+boolean left, right, up, touching;
 PImage img;
 
 class Player implements Displayable, Moveable{
@@ -44,14 +44,6 @@ class Player implements Displayable, Moveable{
      posY = 530;
    }
    
-   if (posX <= 30){ //the left wall
-     posX = 30;
-   }
-   
-   if (posX >= 920){ //the right wall (no idea why it's 920 and not 970)
-     posX = 920;
-   }
-   
    //Vertical wrapping, Bub goes through ground & comes through top or vice versa
    if (posY == 0){ 
      posY = 600;
@@ -71,10 +63,11 @@ class Player implements Displayable, Moveable{
      speedY = 9;
    } 
    
+   
    //Trigger jump
    if (up){
-     speedY = -5; //speedY determines how quick Bub's jump is
-   }     
+      speedY = -9;  //speedY determines how quick Bub's jump is
+   }
    
    //Change y position
    posY += speedY;
@@ -97,9 +90,11 @@ class Player implements Displayable, Moveable{
       float overlapY = totalHeights - Math.abs(diffY);
       
       if (overlapX >= overlapY){
-        if (diffY < 0){
-          posY -= (overlapY + 7); //the +7 is for graphics idk
+        if (diffY <= 0){
+          posY -= (overlapY + 7.5); //the +7 is for graphics idk
           touching = true;
+          
+          //Testing purposes, makes the platform that Bub is on red
           p.changeColor(p);
         }
       }
