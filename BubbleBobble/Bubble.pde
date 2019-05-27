@@ -42,13 +42,13 @@ class Bubble implements Displayable, Moveable{
 
 //Spawns a bubble, this is outside the Bubble class btw!!
  void spawn(){
-   if(a.getX()<42.5){
+   if(a.getX()<42.5 && !(a.getDir())){ //on the left & bub is facing left
      bubbles.add(new Bubble(30+12.5,a.getY(),a.getDir()));
-   }else if(a.getX() > width-30-25){
-     bubbles.add(new Bubble(width-30-25,a.getY(),a.getDir()));
-   }else if(dir){
+   }else if(a.getX() > width-30-50 && (a.getDir())){ //on the right & bub facing left
+     bubbles.add(new Bubble(width-30-12.5,a.getY(),a.getDir()));
+   }else if(dir){ //facing right
       bubbles.add(new Bubble(a.getX()+50,a.getY()+25,a.getDir()));
-   }else{
+   }else{ //facing left
      bubbles.add(new Bubble(a.getX()-50,a.getY()+25,a.getDir()));
    }
   }
