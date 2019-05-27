@@ -12,6 +12,7 @@ void keyPressed(){
     if(posX<=915){ // 1000-60-25 (half of bub)
       posX += speedX;
     }
+    a.changeDir(true);
     img = loadImage("Images/bubblun.png");
   }
   if (keyCode == LEFT){ //move left
@@ -19,6 +20,7 @@ void keyPressed(){
     if(posX>=40){
       posX += speedX;
     }
+    a.changeDir(false);
     img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
   }
   if (keyCode == UP){ //trigger jump 
@@ -29,8 +31,6 @@ void keyPressed(){
    } 
 
   if(key == 'B' || key == 'b'){
-    //Bubble c = (new Bubble(a.getX()+50,a.getY()+25));
-    //bubbles.add(c);
     spawn();
   }
 }
@@ -48,7 +48,7 @@ void setup(){
   bub = loadImage("Images/bubblun.png");
   g = new Game();
   a = new Player(30,height-50-20);
-  b = new Bubble(a.getX()+50,a.getY()+25);
+  b = new Bubble(a.getX()+50,a.getY()+25,a.getDir());
 }
 
 void draw(){

@@ -1,11 +1,14 @@
 public static ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
 
+boolean dir; //true = right, false = left
+
 class Bubble implements Displayable, Moveable{
   float posX, posY, speed = 1;
 
-  Bubble(float x, float y){
+  Bubble(float x, float y, boolean b){
     posX = x;
     posY = y;
+    dir = b;
   }
 
   void display(){
@@ -15,11 +18,19 @@ class Bubble implements Displayable, Moveable{
 
   void move(){
     //if within length of map, moves left or right
-    if(posX < width-30-25 && posX > 30){
-      posX += speed;
+    if(posX < width-30-12.5 && posX > 30+12.5){
+      if(dir){
+        posX += speed;
+      }else{
+        posX -= speed;
+      }
     }else{
       //else move up
-      posY += -1*speed;
+      if(posY<50){
+        posY += 500;
+      }else{
+        posY += -1*speed;
+      }
     }
   }
  
@@ -31,7 +42,14 @@ class Bubble implements Displayable, Moveable{
 
 //Spawns a bubble, this is outside the Bubble class btw!!
  void spawn(){
-    bubbles.add(new Bubble(a.getX()+50,a.getY()+25));
-    //println(bubbles.size());
+   if(a.getX()<42.5){
+     bubbles.add(new Bubble(30+12.5,a.getY(),a.getDir()));
+   }else if(a.getX() > width-30-25){
+     bubbles.add(new Bubble(width-30-25,a.getY(),a.getDir()));
+   }else if(dir){
+      bubbles.add(new Bubble(a.getX()+50,a.getY()+25,a.getDir()));
+   }else{
+     bubbles.add(new Bubble(a.getX()-50,a.getY()+25,a.getDir()));
+   }
   }
     

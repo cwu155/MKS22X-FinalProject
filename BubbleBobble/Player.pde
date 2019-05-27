@@ -1,5 +1,5 @@
 float posX, posY, speedX, speedY;
-boolean left, right, up, touching;
+boolean left, right, up, touching, facingR = true;
 PImage img;
 
 class Player implements Displayable, Moveable{
@@ -30,6 +30,13 @@ class Player implements Displayable, Moveable{
 
  boolean onGround(){
    return (posY == 530);
+ }
+ 
+ boolean getDir(){
+   return facingR;
+ }
+ void changeDir(boolean b){
+   facingR = b;
  }
 
  void move(){
