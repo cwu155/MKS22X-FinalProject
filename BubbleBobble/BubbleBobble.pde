@@ -56,7 +56,11 @@ void draw(){
   for(Platform p : platforms){p.display();}
   a.display();
   a.move();
-  for (Bubble b : bubbles){b.display(); b.move();}
+  for (Bubble b : bubbles){
+     b.display(); 
+     b.move();
+  }
+  g.addTime(1/60);
   //level + score
   fill(0,0,0);
   textSize(25);
@@ -64,11 +68,13 @@ void draw(){
   text("Level: "+g.level,30,35);
   textAlign(RIGHT);
   text("Score: "+a.score,width-30,35);
+  textAlign(CENTER);
+  text("Time: "+g.time,width/2,35);
   
   //Testing Purposes
   textSize(20);
-  text("X: " + posX, 400, 35);
-  text("Y: " + posY, 500, 35);
+  text("X: " + posX, 200, 35);
+  text("Y: " + posY, 300, 35);
   text("SpeedY: " + speedY, 700, 35);
 }
 

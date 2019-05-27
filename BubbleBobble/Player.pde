@@ -51,6 +51,11 @@ class Player implements Displayable, Moveable{
      posY = 530;
    }
    
+   if (posY <= 50){ //top of the map
+     speedY = -9;
+     posY = 50;
+   }
+   
    //Vertical wrapping, Bub goes through ground & comes through top or vice versa
    if (posY == 0){ 
      posY = 600;
@@ -66,7 +71,7 @@ class Player implements Displayable, Moveable{
    }
    
    //If Bub is in the air and not jumping, make him fall!
-    if (!onGround() && !up){
+    if ((!onGround() && !up) || posY <= 50){ //or if above map
      speedY = 9;
    } 
    

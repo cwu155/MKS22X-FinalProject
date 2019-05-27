@@ -54,5 +54,9 @@ class Game implements Displayable{
       //rect(180,450,640,20);
     }
   }
+  
+  void addTime(float x){
+    time += x;
+  }
 
 }
