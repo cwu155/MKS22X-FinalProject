@@ -1,5 +1,5 @@
 float posX, posY, speedX, speedY;
-boolean left, right, up, touching;
+boolean left, right, up, touching, facingRight;
 PImage img;
 
 class Player implements Displayable, Moveable{
@@ -9,6 +9,7 @@ class Player implements Displayable, Moveable{
 
  Player(float x, float y){
    img = loadImage("Images/bubblun.png");
+   facingRight = true;
    posX = x;
    posY = y;
    score = 0;

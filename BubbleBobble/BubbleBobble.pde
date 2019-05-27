@@ -13,13 +13,15 @@ void keyPressed(){
       posX += speedX;
     }
     img = loadImage("Images/bubblun.png");
+    right = true;
   }
   if (keyCode == LEFT){ //move left
     speedX = -15;
     if(posX>=40){
       posX += speedX;
     }
-    img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
+    img = loadImage("Images/bubblunReverse.png");
+    right = false;
   }
   if (keyCode == UP){ //trigger jump 
     touching = false;
@@ -48,7 +50,7 @@ void setup(){
   bub = loadImage("Images/bubblun.png");
   g = new Game();
   a = new Player(30,height-50-20);
-  b = new Bubble(a.getX()+50,a.getY()+25);
+  //b = new Bubble(a.getX()+50,a.getY()+25);
 }
 
 void draw(){

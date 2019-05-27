@@ -1,11 +1,12 @@
 public static ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
-
 class Bubble implements Displayable, Moveable{
-  float posX, posY, speed = 1;
+  float posX, posY, speed;
 
-  Bubble(float x, float y){
+  Bubble(float x, float y, float s){
     posX = x;
     posY = y;
+    speed = s;
+   
   }
 
   void display(){
@@ -19,19 +20,19 @@ class Bubble implements Displayable, Moveable{
       posX += speed;
     }else{
       //else move up
-      posY += -1*speed;
+      posY -= abs(speed);
     }
   }
- 
 
-  //void keyPressed(){
-  //  move();
-  //}
 }
 
 //Spawns a bubble, this is outside the Bubble class btw!!
+//Sets speed to 3
  void spawn(){
-    bubbles.add(new Bubble(a.getX()+50,a.getY()+25));
-    //println(bubbles.size());
+   if (right){
+    bubbles.add(new Bubble(a.getX()+50,a.getY()+25, 3));
+   } else {
+    bubbles.add(new Bubble(a.getX()-50,a.getY()+25,-3));
+   }
   }
     
