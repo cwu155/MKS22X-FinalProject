@@ -13,7 +13,7 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 ---
 
 ### **Bugs**
-- Dragon doesn't move when key is pressed
+- Dragon will jump up slower every time the up key is pressed...
 
 ---
 
