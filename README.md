@@ -14,6 +14,7 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 
 ### **Bugs**
 - Dragon will jump up slower every time the up key is pressed...
+- Bubbles change direction after bub blows bubble in opposite direction
 
 ---
 
@@ -30,3 +31,31 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 - T: Added interfaces to keep track of displayable, moveable, and collideable objects
 
 #### 5/23/19
+
+#### 5/24/19
+- T: Added bounds so that Bub can't walk offscreen
+- T: Tried to fix up movement
+
+#### 5/25/19
+
+#### 5/26/19
+- T: Added bounds so Bub can't jump above the map
+- T: Added bounds so that Bub can't blow bubbles past the left/right bounds of map
+
+#### 5/27/19
+
+#### 5/28/19
+
+#### 5/29/19
+
+#### 5/30/19
+
+#### 5/31/19
+
+#### 6/1/19
+
+#### 6/2/19
+
+#### 6/3/19
+
+#### 6/4/19
