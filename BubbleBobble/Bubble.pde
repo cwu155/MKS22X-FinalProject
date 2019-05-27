@@ -1,13 +1,14 @@
 public static ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
-class Bubble implements Displayable, Moveable{
+
+class Bubble{
   float posX, posY, speed;
 
-  Bubble(float x, float y, float s){
+Bubble(float x, float y, float s){
     posX = x;
     posY = y;
     speed = s;
-   
-  }
+}
+
 
   void display(){
     fill(0,255,0);
@@ -16,15 +17,19 @@ class Bubble implements Displayable, Moveable{
 
   void move(){
     //if within length of map, moves left or right
-    if(posX < width-30-25 && posX > 30){
+    if(posX < width-30-12.5 && posX > 30+12.5){
       posX += speed;
     }else{
       //else move up
       posY -= abs(speed);
     }
   }
-
-}
+      //if(posY<50+12.5){
+      //  posY += 500;
+      //}else{
+      //  posY += -1*speed;
+      //}
+  }
 
 //Spawns a bubble, this is outside the Bubble class btw!!
 //Sets speed to 3
@@ -35,4 +40,3 @@ class Bubble implements Displayable, Moveable{
     bubbles.add(new Bubble(a.getX()-50,a.getY()+25,-3));
    }
   }
-    

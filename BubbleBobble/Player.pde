@@ -1,5 +1,5 @@
 float posX, posY, speedX, speedY;
-boolean left, right, up, touching, facingRight;
+boolean left, right, up, touching, facingR = true;
 PImage img;
 
 class Player implements Displayable, Moveable{
@@ -9,7 +9,6 @@ class Player implements Displayable, Moveable{
 
  Player(float x, float y){
    img = loadImage("Images/bubblun.png");
-   facingRight = true;
    posX = x;
    posY = y;
    score = 0;
@@ -32,6 +31,13 @@ class Player implements Displayable, Moveable{
  boolean onGround(){
    return (posY == 530);
  }
+ 
+ boolean getDir(){
+   return facingR;
+ }
+ void changeDir(boolean b){
+   facingR = b;
+ }
 
  void move(){
    //Checks to see if Bub is touching any platform
@@ -43,6 +49,11 @@ class Player implements Displayable, Moveable{
    if (posY >= 530){ //the ground
      speedY = 0;
      posY = 530;
+   }
+   
+   if (posY <= 50){ //top of the map
+     speedY = -9;
+     posY = 50;
    }
    
    //Vertical wrapping, Bub goes through ground & comes through top or vice versa
@@ -60,7 +71,7 @@ class Player implements Displayable, Moveable{
    }
    
    //If Bub is in the air and not jumping, make him fall!
-    if (!onGround() && !up){
+    if ((!onGround() && !up) || posY <= 50){ //or if above map
      speedY = 9;
    } 
    
