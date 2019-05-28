@@ -29,7 +29,6 @@ void keyPressed(){
     }
     img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
     right = false;
-    img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
   }
   if (keyCode == UP){ //trigger jump 
     touching = false;
@@ -63,6 +62,7 @@ void setup(){
   frenchfries = loadImage("../BubbleBobble/Images/fries.png");
   g = new Game();
   a = new Player(30,height-50-20);
+  Enemy e1 = new Enemy(width/2,60); enemies.add(e1);
 }
 
 void draw(){

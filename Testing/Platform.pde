@@ -47,4 +47,9 @@ class Platform implements Displayable{
     fill(255,0,0);
     rect(p.getX(), p.getY(), p.getWidth(), p.getHeight());
   }
+  
+  void changeColor(Platform p, Enemy e){
+    fill(0,255,0);
+    rect(p.getX(), p.getY(), p.getWidth(), p.getHeight());
+  }
 }
