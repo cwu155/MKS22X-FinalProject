@@ -1,16 +1,18 @@
 float posX, posY, speedX, speedY;
-boolean left, right, up, touching;
-PImage img, imgReverse;
+boolean left, right, up, touching, facingR = true;
+PImage img;
 
 class Player implements Displayable, Moveable{
  ArrayList<Bubble> extendBubbles;
  int score, lives;
 
+
  Player(float x, float y){
    img = loadImage("../BubbleBobble/Images/bubblun.png");
    posX = x;
    posY = y;
-   score = 0; lives = 3;
+   score = 0;
+   lives = 3;
    extendBubbles = new ArrayList<Bubble>();
  }
 
@@ -21,21 +23,20 @@ class Player implements Displayable, Moveable{
  float getY(){
    return posY;
  }
- 
- float getCenterX(){
-   return posX + 25; //25 is the width/2
- }
- 
- float getCenterY(){
-   return posY + 25; //25 is the height/2
- }
 
  void display(){
-  image(img, posX, posY, 50, 50);
+   image(img, posX, posY, 50, 50);
  }
- 
+
  boolean onGround(){
    return (posY == 530);
+ }
+ 
+ boolean getDir(){
+   return facingR;
+ }
+ void changeDir(boolean b){
+   facingR = b;
  }
 
  void move(){
@@ -50,12 +51,9 @@ class Player implements Displayable, Moveable{
      posY = 530;
    }
    
-   if (posX <= 30){ //the left wall
-     posX = 30;
-   }
-   
-   if (posX >= 920){ //the right wall (no idea why it's 920 and not 970)
-     posX = 920;
+   if (posY <= 50){ //top of the map
+     speedY = -9;
+     posY = 50;
    }
    
    //Vertical wrapping, Bub goes through ground & comes through top or vice versa
@@ -73,14 +71,15 @@ class Player implements Displayable, Moveable{
    }
    
    //If Bub is in the air and not jumping, make him fall!
-    if (!onGround() && !up){
+    if ((!onGround() && !up) || posY <= 50){ //or if above map
      speedY = 9;
    } 
    
+   
    //Trigger jump
    if (up){
-     speedY = -5; //speedY determines how quick Bub's jump is
-   }     
+      speedY = -9;  //speedY determines how quick Bub's jump is
+   }
    
    //Change y position
    posY += speedY;
@@ -103,9 +102,11 @@ class Player implements Displayable, Moveable{
       float overlapY = totalHeights - Math.abs(diffY);
       
       if (overlapX >= overlapY){
-        if (diffY < 0){
-          posY -= (overlapY + 7); //the +7 is for graphics idk
+        if (diffY <= 0){
+          posY -= (overlapY + 7.5); //the +7 is for graphics idk
           touching = true;
+          
+          //Testing purposes, makes the platform that Bub is on red
           p.changeColor(p);
         }
       }
