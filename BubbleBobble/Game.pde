@@ -4,7 +4,7 @@ class Game implements Displayable{
   boolean running;
 
   Game(){
-    level = 0;
+    level = 1;
     running = true;
     time = millis()/1000;
   }
@@ -16,7 +16,7 @@ class Game implements Displayable{
   }
 
   void display(){
-    if(level == 0){
+    if(level == 1){
       background(255,192,203);
       fill(0,0,0);
       rect(30,50,width-60,height-70);
@@ -41,8 +41,6 @@ class Game implements Displayable{
       Platform i = new Platform(200,450,600,20); platforms.add(i);
 
       Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
-      Item it = new Item(0,0,250);
-      it.display();
       //left rectangles
       //rect(30,250,100,20);
       //rect(30,350,100,20);

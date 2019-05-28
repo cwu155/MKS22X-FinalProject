@@ -15,7 +15,12 @@ class Enemy implements Displayable, Moveable{
   }
   
   void display(){
-    image(ene,posX,posY);
+    if(!hit){
+      image(ene,posX,posY);
+    }else{
+      Item food = new Item(posX,posY,250);
+      food.display();
+    }
   }
   
   void move(){

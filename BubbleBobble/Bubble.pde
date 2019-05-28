@@ -29,7 +29,6 @@ Bubble(float x, float y, float s){
     for(Enemy e : enemies){
       if((abs(e.getX() - posX)) < 50 && (abs(e.getY() - posY)) < 50){
         e.hitEnemy();
-        print(true);
         return true;
       }
     }

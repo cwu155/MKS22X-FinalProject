@@ -61,6 +61,12 @@ void setup(){
   orange = loadImage("Images/orange.png");
   watermelon = loadImage("Images/watermelon.png");
   frenchfries = loadImage("Images/fries.png");
+  radish.resize(50,50);
+  corn.resize(50,50);
+  friedegg.resize(50,50);
+  orange.resize(50,50);
+  watermelon.resize(50,50);
+  frenchfries.resize(50,50);
   g = new Game();
   a = new Player(30,height-50-20);
   //b = new Bubble(a.getX()+50,a.getY()+25);

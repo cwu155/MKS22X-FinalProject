@@ -2,6 +2,7 @@
 
 class Item implements Displayable{
   int posX, posY, points;
+  boolean hit;
 
   Item(int x, int y, int p){
     posX = x;
