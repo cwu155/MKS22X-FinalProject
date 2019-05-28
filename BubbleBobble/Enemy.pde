@@ -1,3 +1,5 @@
+public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+
 class Enemy implements Displayable, Moveable{
   int posX, posY, speed;
   PImage enemy;
@@ -11,8 +13,12 @@ class Enemy implements Displayable, Moveable{
   }
   
   void display(){
+    image(ene,posX,posY);
   }
   
   void move(){
+    
   }
+  
+  
 }

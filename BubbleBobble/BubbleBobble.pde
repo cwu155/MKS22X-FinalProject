@@ -1,4 +1,5 @@
 PImage bub;
+PImage ene;
 Game g;
 Player a;
 Bubble b;
@@ -47,6 +48,7 @@ void setup(){
   size(1000,600);
   background(255);
   bub = loadImage("Images/bubblun.png");
+  ene = loadImage("Images/enemy1.gif");
   g = new Game();
   a = new Player(30,height-50-20);
   //b = new Bubble(a.getX()+50,a.getY()+25);
@@ -62,7 +64,10 @@ void draw(){
      b.display(); 
      b.move();
   }
-  g.addTime(1/60);
+  for (Enemy e : enemies){
+     e.display(); 
+     e.move();
+  }
   //level + score
   fill(0,0,0);
   textSize(25);

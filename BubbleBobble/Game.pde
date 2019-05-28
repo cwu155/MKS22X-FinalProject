@@ -39,7 +39,7 @@ class Game implements Displayable{
       Platform h = new Platform(200,350,600,20); platforms.add(h);
       Platform i = new Platform(200,450,600,20); platforms.add(i);
 
-
+      Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
       //left rectangles
       //rect(30,250,100,20);
       //rect(30,350,100,20);
