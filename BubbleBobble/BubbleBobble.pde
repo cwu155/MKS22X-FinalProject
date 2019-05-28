@@ -68,8 +68,11 @@ void setup(){
 }
 
 void draw(){
+  g.addTime();
   g.display();
-  for(Platform p : platforms){p.display();}
+  for(Platform p : platforms){
+    p.display();
+  }
   a.display();
   a.move();
   for (Bubble b : bubbles){
@@ -88,13 +91,12 @@ void draw(){
   textAlign(RIGHT);
   text("Score: "+a.score,width-30,35);
   textAlign(CENTER);
-  text("Time: "+g.time,width/2,35);
+  text("Time: "+g.getTime(),700,35);
   
   //Testing Purposes
   textSize(20);
   text("X: " + posX, 200, 35);
   text("Y: " + posY, 300, 35);
-  text("SpeedY: " + speedY, 700, 35);
 }
 
 interface Displayable{
