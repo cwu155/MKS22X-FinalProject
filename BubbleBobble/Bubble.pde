@@ -1,6 +1,6 @@
 public static ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
 
-class Bubble{
+class Bubble implements Collideable{
   float posX, posY, speed;
 
 Bubble(float x, float y, float s){
@@ -23,6 +23,17 @@ Bubble(float x, float y, float s){
       //else move up
       posY -= abs(speed);
     }
+  }
+  
+  boolean touching(){
+    for(Enemy e : enemies){
+      if((abs(e.getX() - posX)) < 50 && (abs(e.getY() - posY)) < 50){
+        e.hitEnemy();
+        print(true);
+        return true;
+      }
+    }
+    return false;
   }
       //if(posY<50+12.5){
       //  posY += 500;

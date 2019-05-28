@@ -20,6 +20,7 @@ class Game implements Displayable{
       background(255,192,203);
       fill(0,0,0);
       rect(30,50,width-60,height-70);
+      rect(width/2-25,0,50,50);
       fill(255,192,203);
       noStroke();
 
@@ -40,6 +41,8 @@ class Game implements Displayable{
       Platform i = new Platform(200,450,600,20); platforms.add(i);
 
       Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
+      Item it = new Item(0,0,250);
+      it.display();
       //left rectangles
       //rect(30,250,100,20);
       //rect(30,350,100,20);
@@ -55,8 +58,12 @@ class Game implements Displayable{
     }
   }
   
-  void addTime(float x){
-    time += x;
+  void addTime(){
+    time++;
+  }
+  
+  int getTime(){
+    return (int)time/60;
   }
 
 }
