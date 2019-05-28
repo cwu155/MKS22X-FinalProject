@@ -78,6 +78,7 @@ void draw(){
   for (Bubble b : bubbles){
      b.display(); 
      b.move();
+     b.touching();
   }
   for (Enemy e : enemies){
      e.display(); 
