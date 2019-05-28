@@ -43,6 +43,8 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 - T: Added bounds so that Bub can't blow bubbles past the left/right bounds of map
 
 #### 5/27/19
+- T: Added display for enemies
+- T: Set up item pictures according to point worth
 
 #### 5/28/19
 
