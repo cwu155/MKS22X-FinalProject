@@ -1,4 +1,5 @@
 public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+
 class Enemy implements Displayable, Moveable{
   float posX, posY, speedX, speedY;
   boolean touchPlatform;
@@ -23,7 +24,10 @@ class Enemy implements Displayable, Moveable{
   
   boolean onGround(){
    return (posY == 530);
- }
+  }
+  
+  
+  
   
   void display(){
     image(enemy, posX, posY, 50, 50);
@@ -35,15 +39,40 @@ class Enemy implements Displayable, Moveable{
         touchingPlatform(p);
      }
      
+     //Bounds
+     if (posY >= 530){ //the ground
+       speedY = 0;
+       posY = 530;
+     }
+   
+     if (posY <= 50){ //top of the map
+       speedY = -9;
+       posY = 50;
+     }  
+     
+     //If touching platform, stop!
      if (touchPlatform){
        speedY = 0;
      }
      
+     //If not on a platform and not on the ground, move!
      if (!onGround()){
        speedY = 5;
      }
      
-     posY += speedY;
+     //Yikes
+     if (abs(a.getX() - this.getX()) > 300){
+       if (a.getX() - this.getX() < -50){
+         speedX -= 0.01;
+       }
+     }
+     
+     if (posX <= 915 && posX >= 40){
+       posX += speedX;
+       posY += speedY;
+     } else {
+       speedX *= -1;
+     }
   }
   
   void touchingPlatform(Platform p){
