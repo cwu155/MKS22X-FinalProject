@@ -1,5 +1,5 @@
 public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-
+boolean enemyHit;
 class Enemy implements Displayable, Moveable{
   int posX, posY, speed;
   PImage enemy;

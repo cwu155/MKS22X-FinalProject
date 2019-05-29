@@ -21,6 +21,10 @@ class Enemy implements Displayable, Moveable{
     return posY;
   }
   
+  boolean onGround(){
+   return (posY == 530);
+ }
+  
   void display(){
     image(enemy, posX, posY, 50, 50);
   }
@@ -31,10 +35,12 @@ class Enemy implements Displayable, Moveable{
         touchingPlatform(p);
      }
      
-     speedY = 5;
-     
      if (touchPlatform){
        speedY = 0;
+     }
+     
+     if (!onGround()){
+       speedY = 5;
      }
      
      posY += speedY;
@@ -58,7 +64,7 @@ class Enemy implements Displayable, Moveable{
       
       if (overlapX >= overlapY){
         if (diffY <= 0){
-          posY -= (overlapY + 7.5); //the +7 is for graphics idk
+          posY -= (overlapY + 1); //the +1 is for graphics idk
           touchPlatform = true;
           
           //Testing purposes, makes the platform that enemy is on blue
