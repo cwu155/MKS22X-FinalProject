@@ -13,7 +13,7 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 ---
 
 ### **Bugs**
-- Dragon will jump up slower every time the up key is pressed...
+- As the game progresses, the time gets slower and so everything in-game gets slower as well.
 - Enemy doesn't disappear after being turned into food
 - Bubbles are still blown outside of map
 - Need to account for hole on top of map in bubble movement now!!
@@ -22,37 +22,48 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 
 ### **Development Log**
 #### 5/20/19
-- T: Uploaded images of dragon, enemies and items
-- T: Displayed a dragon and level 1 map
+- T: Uploaded images of Bub, enemies and items
+- T: Displayed Bub and level 1 map
+- C: Made testing folder, started to test Bub's movement
 
 #### 5/21/19
-- T: Made bubble move, but doesn't move when key is pressed
+- T: Made Bub move, but doesn't move when key is pressed
+- C: Made Bub move left, right in Testing folder
 
 #### 5/22/19
 - T: Separated classes into tabs
 - T: Added interfaces to keep track of displayable, moveable, and collideable objects
+- C: Added accessor methods for Player, made Bub jump
+- C: Deleted and merged folders/files
 
 #### 5/23/19
+- C: Added a Platform class in Testing
 
 #### 5/24/19
 - T: Added bounds so that Bub can't walk offscreen
 - T: Tried to fix up movement
+- C: Made Bub stop when he lands onto a platform
 
 #### 5/25/19
+- C: Tried to make Bub jump more smoothly
 
 #### 5/26/19
 - T: Added bounds so Bub can't jump above the map
 - T: Added bounds so that Bub can't blow bubbles past the left/right bounds of map
+- C: Fixed Bub's jump, made sprite change directions when facing left or right
+- C: Added to Bubble class so Bub blows bubbles
 
 #### 5/27/19
 - T: Added display for enemies
 - T: Set up item pictures according to point worth
+- C: Made bubbles move in both directions, merged Testing code into main code
 
 #### 5/28/19
 - T: Made enemy turn into food item when hit by a bubbles
 - T: Added method to check if bubble touches enemy
 - T: Added hole on top of map
 - T: Added counter for time, but it gets progressively slower. Probably because of frame rate?
+- C: Added enemy display into Testing, worked on movement
 
 #### 5/29/19
 
