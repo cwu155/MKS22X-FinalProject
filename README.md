@@ -14,7 +14,9 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 
 ### **Bugs**
 - Dragon will jump up slower every time the up key is pressed...
-- Bubbles change direction after bub blows bubble in opposite direction
+- Enemy doesn't disappear after being turned into food
+- Bubbles are still blown outside of map
+- Need to account for hole on top of map in bubble movement now!!
 
 ---
 
@@ -47,6 +49,10 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 - T: Set up item pictures according to point worth
 
 #### 5/28/19
+- T: Made enemy turn into food item when hit by a bubbles
+- T: Added method to check if bubble touches enemy
+- T: Added hole on top of map
+- T: Added counter for time, but it gets progressively slower. Probably because of frame rate?
 
 #### 5/29/19
 
