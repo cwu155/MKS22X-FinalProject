@@ -27,7 +27,7 @@ Bubble(float x, float y, float s){
   
   boolean touching(){
     for(Enemy e : enemies){
-      if((abs(e.getX() - posX)) < 50 && (abs(e.getY() - posY)) < 50){
+      if((abs(e.getX() - posX)) < 25 && (abs(e.getY() - posY)) < 25){
         e.hitEnemy();
         return true;
       }

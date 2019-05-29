@@ -2,7 +2,7 @@ float posX, posY, speedX, speedY;
 boolean left, right, up, touching, facingR = true;
 PImage img;
 
-class Player implements Displayable, Moveable{
+class Player implements Displayable, Moveable, Collideable{
  ArrayList<Bubble> extendBubbles;
  int score, lives;
 
@@ -112,6 +112,13 @@ class Player implements Displayable, Moveable{
       }
     }
   }
+ }
+ 
+ boolean touching(){
+   for(Item i : items){
+     if((abs(i.getX() - posX)) < 25 && (abs(i.getY() - posY)) < 25){
+     }
+   }
  }
 
 }

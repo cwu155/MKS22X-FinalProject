@@ -6,13 +6,13 @@ class Game implements Displayable{
   Game(){
     level = 1;
     running = true;
-    time = millis()/1000;
+    time = frameCount/60;
   }
 
   Game (int i){
     level = i;
     running = true;
-    time = millis()/1000;
+    time = frameCount/60;
   }
 
   void display(){
