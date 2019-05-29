@@ -1,4 +1,4 @@
-
+public static ArrayList<Item> items = new ArrayList<Item>();
 
 class Item implements Displayable{
   int posX, posY, points;
@@ -24,5 +24,17 @@ class Item implements Displayable{
     }else{
       image(frenchfries,posX,posY);
     }
+  }
+  
+  void hitItem(){
+    hit = true;
+  }
+  
+  int getX(){
+    return posX;
+  }
+  
+  int getY(){
+    return posY;
   }
 }

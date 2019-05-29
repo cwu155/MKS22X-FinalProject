@@ -2,7 +2,7 @@ public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 boolean enemyHit;
 class Enemy implements Displayable, Moveable{
   int posX, posY, speed;
-  boolean hit;
+  boolean hit = false;
   PImage enemy;
 
   Enemy(int x, int y, PImage img){
@@ -11,7 +11,7 @@ class Enemy implements Displayable, Moveable{
     speed = 10;
     enemy = img;
     enemy.resize(50,50);
-    hit = false;
+    //hit = false;
   }
   
   void display(){

@@ -38,7 +38,7 @@ void keyPressed(){
     }
    } 
 
-  if(key == 'B' || key == 'b'){
+  if(keyCode == 32){ //space
     spawn();
   }
 }
@@ -69,8 +69,6 @@ void setup(){
   frenchfries.resize(50,50);
   g = new Game();
   a = new Player(30,height-50-20);
-  //b = new Bubble(a.getX()+50,a.getY()+25);
-  //b = new Bubble(a.getX()+50,a.getY()+25,a.getDir());
 }
 
 void draw(){
