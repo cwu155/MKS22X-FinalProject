@@ -59,7 +59,7 @@ class Game implements Displayable{
   
   
   int getTime(){
-    return (int)time/60;
+    return (int)time;
   }
 
 }
