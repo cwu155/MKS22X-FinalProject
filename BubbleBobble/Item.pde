@@ -27,7 +27,7 @@ class Item implements Displayable{
   }
   
   void hitItem(){
-    hit = true;
+    a.addPoints(points);
   }
   
   int getX(){

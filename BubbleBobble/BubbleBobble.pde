@@ -72,7 +72,6 @@ void setup(){
 }
 
 void draw(){
-  g.addTime();
   g.display();
   for(Platform p : platforms){
     p.display();
@@ -88,13 +87,16 @@ void draw(){
      e.display(); 
      e.move();
   }
+  for(Item i : items){
+    i.display();
+  }
   //level + score
   fill(0,0,0);
   textSize(25);
   textAlign(LEFT);
-  text("Level: "+g.level,30,35);
+  text("Score: "+a.score,30,35);
   textAlign(RIGHT);
-  text("Score: "+a.score,width-30,35);
+  text("Level: "+g.level,width-30,35);
   textAlign(CENTER);
   text("Time: "+g.getTime(),700,35);
   

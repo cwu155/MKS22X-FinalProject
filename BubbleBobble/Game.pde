@@ -20,7 +20,7 @@ class Game implements Displayable{
       background(255,192,203);
       fill(0,0,0);
       rect(30,50,width-60,height-70);
-      rect(width/2-25,0,50,50);
+      //rect(width/2-25,0,50,50);
       fill(255,192,203);
       noStroke();
 
@@ -57,12 +57,9 @@ class Game implements Displayable{
     }
   }
   
-  void addTime(){
-    time++;
-  }
   
   int getTime(){
-    return (int)time/60;
+    return (int)time;
   }
 
 }
