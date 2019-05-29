@@ -2,7 +2,6 @@ public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
 class Enemy implements Displayable, Moveable{
   int posX, posY, speed;
-  boolean hit = false;
   PImage enemy;
 
   Enemy(int x, int y, PImage img){
@@ -11,16 +10,10 @@ class Enemy implements Displayable, Moveable{
     speed = 10;
     enemy = img;
     enemy.resize(50,50);
-    //hit = false;
   }
   
   void display(){
-    if(!hit){
-      image(ene,posX,posY);
-    }else{
-      Item food = new Item(posX,posY,250);
-      food.display();
-    }
+    image(ene,posX,posY);
   }
   
   void move(){
@@ -28,7 +21,9 @@ class Enemy implements Displayable, Moveable{
   }
   
   void hitEnemy(){
-    hit = true;
+    Item food = new Item(posX,posY,10);
+    items.add(food);
+    enemies.remove(this);
   }
   
   int getX(){
