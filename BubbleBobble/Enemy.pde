@@ -26,6 +26,7 @@ class Enemy implements Displayable, Moveable{
     Item food = new Item(posX,posY,values[(int)random(values.length)]);
     items.add(food);
     enemyHit = true;
+    enemies.remove(0);
   }
   
   int getX(){

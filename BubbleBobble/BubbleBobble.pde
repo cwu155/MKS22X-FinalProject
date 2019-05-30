@@ -27,7 +27,7 @@ void keyPressed(){
     if(posX>=40){
       posX += speedX;
     }
-    img = loadImage("Images/bubblunReverse.png");
+    //img = loadImage("Images/bubblunReverse.png");
     right = false;
     img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
   }
@@ -69,6 +69,7 @@ void setup(){
   frenchfries.resize(50,50);
   g = new Game();
   a = new Player(30,height-50-20);
+  Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
 }
 
 void draw(){
