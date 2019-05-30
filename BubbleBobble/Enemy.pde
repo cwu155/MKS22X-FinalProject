@@ -15,13 +15,15 @@ class Enemy implements Displayable, Moveable{
   void display(){
     if(!enemyHit){
       image(ene,posX,posY);
-    };  }
+    }
+  }
+  
   void move(){
     
   }
   
   void hitEnemy(){
-    Item food = new Item(posX,posY,10);
+    Item food = new Item(posX,posY,values[(int)random(values.length)]);
     items.add(food);
     enemyHit = true;
   }
