@@ -26,7 +26,10 @@ class Enemy implements Displayable, Moveable{
    return (posY == 530);
   }
   
-  
+  void checkPosition(Player p){
+    //If player is to the left
+    //if (p.getX() < posX){
+    }  
   
   
   void display(){
@@ -60,18 +63,35 @@ class Enemy implements Displayable, Moveable{
        speedY = 5;
      }
      
+     
      //Yikes
-     if (abs(a.getX() - this.getX()) > 300){
-       if (a.getX() - this.getX() < -50){
-         speedX -= 0.01;
-       }
+     //If Bub is to the left, move towards the left
+     if (a.getX() < this.getX() && touchPlatform){
+       speedX = -2;
+       println("Xcor: " + this.getX());
+       println("Ycor: " + this.getY());
      }
      
-     if (posX <= 915 && posX >= 40){
+     //If Bub is to the right, move towards the right
+     if (a.getX() > this.getX() && touchPlatform){
+       speedX = 2;
+     }
+     
+     //If Bub is below, move down
+     if (a.getY() > this.getY() && touchPlatform){
+       speedY = 5;
+     }
+     
+     //If Bub is above, move up when there's a platform
+     
+    
+     
+     if (posX <= 915 || posX > 40){
        posX += speedX;
        posY += speedY;
-     } else {
-       speedX *= -1;
+       if (posX <= 40){
+         posX += 2;
+       }
      }
   }
   
