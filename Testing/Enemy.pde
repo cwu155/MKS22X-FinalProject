@@ -26,40 +26,47 @@ class Enemy implements Displayable, Moveable{
    return (posY == 530);
   }
   
-  void checkBub(){
-    //Yikes
-     //If Bub is to the left, move towards the left
-     if (a.getX() < this.getX() && touchPlatform){
-       speedX = -2;
-       //Testing
-       println("Xcor: " + this.getX());
-       println("Ycor: " + this.getY());
-     }
-     
-     //If Bub is to the right, move towards the right
-     if (a.getX() > this.getX() && touchPlatform){
-       speedX = 2;
-     }
-     
-     //If Bub and enemy are at equal x-coordinates, don't move
-     //Temporary because enemy should move to Bub's y-coordinate
-     //if (a.getX() == this.getX() && touchPlatform){
-     //  speedX = 0;
-     //}
-     
-     //If Bub is below, move down
-     if (a.getY() > this.getY() && touchPlatform){
-       speedY = 5;
-     }
-     
-     //If Bub is above, move up when there's a platform
-     
-    }  
-  
-  
   void display(){
     image(enemy, posX, posY, 50, 50);
   }
+  
+  //Should return where the nearest Platform is so it can jump
+  Platform nearestPlatform(){
+    //If Bub is above
+    
+    return platforms.get(0);
+  }
+  
+  void checkBub(){
+    //Yikes   
+    //If Bub is to the left, move towards the left
+     if (a.getX() < this.getX() && touchPlatform){
+       speedX = -3;
+     }
+     
+    //If Bub is to the right, move towards the right
+     if (a.getX() > this.getX() && touchPlatform){
+       speedX = 3;
+     }
+     
+    //If Bub and enemy are at equal x-coordinates, don't move
+    //Temporary because enemy should move to Bub's y-coordinate
+     if (a.getX() == this.getX() && touchPlatform){
+       speedX = 0;
+     }
+     
+     //If Bub is below, move down
+     if (a.getY() > this.getY()){
+       speedY = 5;
+     }
+     
+     //If Bub is above, move up when there's a platform nearby
+     if (a.getY() < this.getY()){
+      speedX = 0;
+      speedY -= 9;
+    }
+  }  
+  
   
   void move(){
      //Checks to see if enemy is touching any platform
@@ -88,6 +95,7 @@ class Enemy implements Displayable, Moveable{
        speedY = 5;
      }
      
+     //Follow Bub!
      checkBub();
  
      
