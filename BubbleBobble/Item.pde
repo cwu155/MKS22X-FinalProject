@@ -1,4 +1,5 @@
 public static ArrayList<Item> items = new ArrayList<Item>();
+public static int[] values = {10,10,10,10,10,10,10,10,10,10,50,50,50,50,50,100,100,100,250,250,500,500,1000};
 boolean itemHit;
 class Item implements Displayable{
   int posX, posY, points;
