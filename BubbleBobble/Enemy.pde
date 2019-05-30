@@ -13,9 +13,9 @@ class Enemy implements Displayable, Moveable{
   }
   
   void display(){
-    if(!enemyHit){image(ene,posX,posY);}
-  }
-  
+    if(!enemyHit){
+      image(ene,posX,posY);
+    };  }
   void move(){
     
   }
@@ -23,7 +23,6 @@ class Enemy implements Displayable, Moveable{
   void hitEnemy(){
     Item food = new Item(posX,posY,10);
     items.add(food);
-    enemies.remove(this);
     enemyHit = true;
   }
   

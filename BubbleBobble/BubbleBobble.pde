@@ -78,6 +78,7 @@ void draw(){
   }
   a.display();
   a.move();
+  a.touching();
   for (Bubble b : bubbles){
      b.display(); 
      b.move();

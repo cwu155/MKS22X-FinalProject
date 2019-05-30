@@ -116,7 +116,7 @@ class Player implements Displayable, Moveable, Collideable{
  
  boolean touching(){
    for(Item i : items){
-     if((abs(i.getX() - posX)) < 25 && (abs(i.getY() - posY)) < 25){
+     if((abs(i.getX() - posX)) < 50 && (abs(i.getY() - posY)) < 25){
        i.hitItem();
        return true;
      }
