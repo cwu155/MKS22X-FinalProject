@@ -13,6 +13,11 @@ class Game implements Displayable{
   }
 
   void display(){
+    println(enemies.size());
+    
+    if(!running){
+      System.exit(0);
+    }
     if(level == 1){
       background(255,192,203);
       fill(0,0,0);
@@ -37,9 +42,12 @@ class Game implements Displayable{
       Platform h = new Platform(200,350,600,20); platforms.add(h);
       Platform i = new Platform(200,450,600,20); platforms.add(i);
 
-      Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
+    //  Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
      // Enemy e2 = new Enemy(width/2,300,ene); enemies.add(e2);
-
+      
+      if(enemies.size() == 0){
+        running = false;
+      }
       //left rectangles
       //rect(30,250,100,20);
       //rect(30,350,100,20);
