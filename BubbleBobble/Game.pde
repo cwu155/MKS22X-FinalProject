@@ -1,18 +1,15 @@
 class Game implements Displayable{
   int level;
-  float time;
   boolean running;
 
   Game(){
     level = 1;
     running = true;
-    time = frameCount/60;
   }
 
   Game (int i){
     level = i;
     running = true;
-    time = frameCount/60;
   }
 
   void display(){
@@ -41,7 +38,7 @@ class Game implements Displayable{
       Platform i = new Platform(200,450,600,20); platforms.add(i);
 
       Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
-      Enemy e2 = new Enemy(width/2,300,ene); enemies.add(e2);
+     // Enemy e2 = new Enemy(width/2,300,ene); enemies.add(e2);
 
       //left rectangles
       //rect(30,250,100,20);
@@ -60,7 +57,7 @@ class Game implements Displayable{
   
   
   int getTime(){
-    return (int)time;
+    return frameCount/60;
   }
 
 }
