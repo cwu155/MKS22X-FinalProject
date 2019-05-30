@@ -2,16 +2,14 @@ public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
 class Enemy implements Displayable, Moveable{
   float posX, posY, speedX, speedY;
-  boolean touchPlatform;
+  boolean touchPlatform, facingR;
   PImage enemy;
 
   Enemy(float x, float y){
-    enemy = loadImage("../BubbleBobble/Images/enemy1.gif");
     posX = x;
     posY = y;
-    //speedX = 10;
-    //enemy = img;
-    //enemy.resize(50,50);
+    facingR = true;
+    enemy = loadImage("../BubbleBobble/Images/enemy1.gif");
   }
   
   float getX(){
@@ -27,6 +25,11 @@ class Enemy implements Displayable, Moveable{
   }
   
   void display(){
+    if (facingR){
+      enemy = loadImage("../BubbleBobble/Images/enemy1.gif");
+    } else {
+      enemy = loadImage("../BubbleBobble/Images/enemyLeft.png");
+    }
     image(enemy, posX, posY, 50, 50);
   }
   
@@ -41,11 +44,13 @@ class Enemy implements Displayable, Moveable{
     //Yikes   
     //If Bub is to the left, move towards the left
      if (a.getX() < this.getX() && touchPlatform){
+       facingR = false;
        speedX = -3;
      }
      
     //If Bub is to the right, move towards the right
      if (a.getX() > this.getX() && touchPlatform){
+       facingR = true;
        speedX = 3;
      }
      
