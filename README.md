@@ -66,6 +66,11 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 - C: Added enemy display into Testing, worked on movement
 
 #### 5/29/19
+- T: Swapped level and score positions on map
+- T: Removed hole on top of map
+- T: Changed bubble blowing to spacebar
+- T: Made enemy disappear when hit with bubble, also turns into food item
+- T: Made item disappear when hit with player
 
 #### 5/30/19
 
