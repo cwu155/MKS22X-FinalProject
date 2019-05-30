@@ -26,7 +26,35 @@ class Enemy implements Displayable, Moveable{
    return (posY == 530);
   }
   
-  
+  void checkBub(){
+    //Yikes
+     //If Bub is to the left, move towards the left
+     if (a.getX() < this.getX() && touchPlatform){
+       speedX = -2;
+       //Testing
+       println("Xcor: " + this.getX());
+       println("Ycor: " + this.getY());
+     }
+     
+     //If Bub is to the right, move towards the right
+     if (a.getX() > this.getX() && touchPlatform){
+       speedX = 2;
+     }
+     
+     //If Bub and enemy are at equal x-coordinates, don't move
+     //Temporary because enemy should move to Bub's y-coordinate
+     //if (a.getX() == this.getX() && touchPlatform){
+     //  speedX = 0;
+     //}
+     
+     //If Bub is below, move down
+     if (a.getY() > this.getY() && touchPlatform){
+       speedY = 5;
+     }
+     
+     //If Bub is above, move up when there's a platform
+     
+    }  
   
   
   void display(){
@@ -60,18 +88,15 @@ class Enemy implements Displayable, Moveable{
        speedY = 5;
      }
      
-     //Yikes
-     if (abs(a.getX() - this.getX()) > 300){
-       if (a.getX() - this.getX() < -50){
-         speedX -= 0.01;
-       }
-     }
+     checkBub();
+ 
      
-     if (posX <= 915 && posX >= 40){
+     if (posX <= 915 || posX > 40){
        posX += speedX;
        posY += speedY;
-     } else {
-       speedX *= -1;
+       if (posX <= 40){
+         posX += 2;
+       }
      }
   }
   
