@@ -13,7 +13,7 @@ class Game implements Displayable{
   }
 
   void display(){
-    println(enemies.size());
+    //println(enemies.size());
     
     if(!running){
       count++;
