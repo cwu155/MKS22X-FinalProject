@@ -87,7 +87,7 @@ void draw(){
   }
   for (Enemy e : enemies){
      e.display(); 
-     e.move();
+     //e.move();
   }
   for(Item i : items){
     i.display();

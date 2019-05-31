@@ -22,6 +22,7 @@ void keyPressed(){
     img = loadImage("Images/bubblun.png");
     right = true;
   }
+  
   if (keyCode == LEFT){ //move left
     speedX = -15;
     if(posX>=40){
@@ -31,6 +32,7 @@ void keyPressed(){
     right = false;
     img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
   }
+  
   if (keyCode == UP){ //trigger jump 
     touching = false;
     if (posY >= 50){
@@ -70,9 +72,15 @@ void setup(){
   g = new Game();
   a = new Player(30,height-50-20);
   Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
+  level1();
 }
 
 void draw(){
+  println("Platforms: " + platforms.size());
+  println("Bubbles: " + bubbles.size());
+  println("Enemies: " + enemies.size());
+  println("Items: " + items.size());
+  
   g.display();
   for(Platform p : platforms){
     p.display();
@@ -119,3 +127,19 @@ interface Moveable{
 interface Collideable{
   boolean touching();
 }
+
+void level1(){
+     Platform a = new Platform(30,250,100,20); platforms.add(a);
+      Platform b = new Platform(30,350,100,20); platforms.add(b);
+      Platform c = new Platform(30,450,100,20); platforms.add(c);
+
+      //right rectangles
+      Platform d = new Platform(width-30-100,250,100,20); platforms.add(d);
+      Platform e = new Platform(width-30-100,350,100,20); platforms.add(e);
+      Platform f = new Platform(width-30-100,450,100,20); platforms.add(f);
+
+      //middle rectangles
+      Platform g = new Platform(200,250,600,20); platforms.add(g);
+      Platform h = new Platform(200,350,600,20); platforms.add(h);
+      Platform i = new Platform(200,450,600,20); platforms.add(i);
+  }

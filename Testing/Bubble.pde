@@ -26,14 +26,6 @@ Bubble(float x, float y, float s){
   }
   
   boolean touching(){
-    //for(Enemy e : enemies){
-    //  if((abs(e.getX() - posX)) == 0 && (abs(e.getY() - posY)) < 50){
-    //    e.hitEnemy();
-    //    return true;
-    //  }
-    //}
-    //return false;
-    
     for(Enemy e: enemies) {
             if(this.posX + 25 > e.getX() &&
                this.posY + 25 > e.getY() &&
@@ -43,8 +35,7 @@ Bubble(float x, float y, float s){
                 return true;
             }
         }
-        return false;
-    
+        return false;  
   }
       //if(posY<50+12.5){
       //  posY += 500;
