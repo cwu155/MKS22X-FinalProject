@@ -14,9 +14,8 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 
 ### **Bugs**
 - As the game progresses, the time gets slower and so everything in-game gets slower as well.
-- Enemy doesn't disappear after being turned into food
 - Bubbles are still blown outside of map
-- Need to account for hole on top of map in bubble movement now!!
+- Bubble -> enemy -> food only works for 1 enemy?
 
 ---
 
@@ -61,18 +60,17 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 #### 5/28/19
 - T: Made enemy turn into food item when hit by a bubbles
 - T: Added method to check if bubble touches enemy
-- T: Added hole on top of map
 - T: Added counter for time, but it gets progressively slower. Probably because of frame rate?
 - C: Added enemy display into Testing, worked on movement
 
 #### 5/29/19
-- T: Swapped level and score positions on map
-- T: Removed hole on top of map
 - T: Changed bubble blowing to spacebar
 - T: Made enemy disappear when hit with bubble, also turns into food item
 - T: Made item disappear when hit with player
 
 #### 5/30/19
+- T: Added random food item after hitting enemy with bubble
+- T: Added game end (when no enemies + no bubbles, since only 1 level right now)
 
 #### 5/31/19
 
