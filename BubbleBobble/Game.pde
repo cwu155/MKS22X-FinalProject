@@ -1,5 +1,5 @@
 class Game implements Displayable{
-  int level;
+  int level, count=0;
   boolean running;
 
   Game(){
@@ -16,7 +16,10 @@ class Game implements Displayable{
     println(enemies.size());
     
     if(!running){
-      System.exit(0);
+      count++;
+      if(count > 900){ //ends after 900 frames which is ~15s
+        System.exit(0);
+      }
     }
     if(level == 1){
       background(255,192,203);
@@ -45,7 +48,7 @@ class Game implements Displayable{
     //  Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
      // Enemy e2 = new Enemy(width/2,300,ene); enemies.add(e2);
       
-      if(enemies.size() == 0){
+      if(enemies.size() == 0 && items.size() == 0){
         running = false;
       }
       //left rectangles
