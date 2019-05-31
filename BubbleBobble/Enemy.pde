@@ -2,17 +2,13 @@ public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 boolean enemyHit;
 
 class Enemy implements Displayable, Moveable{
-  PVector location, velocity;
   float eposX, eposY, espeedX, espeedY;
   boolean touchPlatform, facingR;
   PImage enemy;
 
   Enemy(float x, float y, PImage enemy){
-    location = new PVector(x,y);
-    velocity = new PVector(0,1);
     eposX = x;
     eposY = y;
-    //speed = 10;
     facingR = true;
     enemy = loadImage("../BubbleBobble/Images/enemy1.gif");
   }
@@ -41,16 +37,17 @@ class Enemy implements Displayable, Moveable{
   }
   
   void checkBub(){
-  /*  if(a.getX() == eposX && touchPlatform){
-      int r = (int)random(2);
-      if(r==0){
-        facingR = false;
-        espeedX = -1.5;
-      }else{
-        facingR = true;
-        espeedX = 1.5;
-      }
-    }*/
+    //if(a.getX() == eposX && touchPlatform){
+    //  int r = (int)random(2);
+    //  if(r==0){
+    //    facingR = false;
+    //    espeedX = -1.5;
+    //  }else{
+    //    facingR = true;
+    //    espeedX = 1.5;
+    //  }
+    //}
+    
     //If Bub is to the left, move towards the left
      if (a.getX() < eposX && touchPlatform){
        facingR = false;
@@ -79,14 +76,14 @@ class Enemy implements Displayable, Moveable{
     //Checks to see if enemy is touching any platform
      for (Platform p : platforms){
         touchingPlatform(p);
-     }
-    
+     }   
      
      //If touching platform, stop!
      if (touchPlatform){
        espeedY = 0;
      }
      
+     //Follows Bub!
      checkBub();
      
      //If not on a platform and not on the ground, move!
@@ -129,7 +126,7 @@ class Enemy implements Displayable, Moveable{
           eposY -= (overlapY + 1); //the +1 is for graphics idk
           touchPlatform = true;
           
-          //Testing purposes, makes the platform that enemy is on blue
+          //Testing purposes, makes the platform that enemy is on green
           p.changeColor(p, this);
         }
       }

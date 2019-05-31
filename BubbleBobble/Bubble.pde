@@ -9,7 +9,6 @@ Bubble(float x, float y, float s){
     speed = s;
 }
 
-
   void display(){
     fill(0,255,0);
     ellipse(posX,posY,25,25);
@@ -26,23 +25,18 @@ Bubble(float x, float y, float s){
   }
   
   boolean touching(){
-   for(Enemy e: enemies) {
-            if(this.posX + 25 > e.getX() &&
-               this.posY + 25 > e.getY() &&
-               this.posX - 25 < e.getX() + 50 &&
-               this.posY - 25 < e.getY() + 50) {
-                e.hitEnemy();
-                return true;
-            }
-        }
-        return false;  
+   for(Enemy e: enemies){
+     if(this.posX + 25 > e.getX() &&
+        this.posY + 25 > e.getY() &&
+        this.posX - 25 < e.getX() + 50 &&
+        this.posY - 25 < e.getY() + 50){
+        e.hitEnemy();
+        return true;
+       }
+    }
+    return false;  
   }
-      //if(posY<50+12.5){
-      //  posY += 500;
-      //}else{
-      //  posY += -1*speed;
-      //}
-  }
+ }
 
 //Spawns a bubble, this is outside the Bubble class btw!!
 //Sets speed to 3

@@ -41,6 +41,7 @@ class Platform implements Displayable{
     noStroke();
     rect(posX, posY, pWidth, pHeight);
   }
+  
 
   //Testing purposes
   void changeColor(Platform p){

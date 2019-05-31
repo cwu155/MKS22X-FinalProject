@@ -1,14 +1,8 @@
-PImage bub;
-PImage ene;
 Game g;
 Player a;
 Bubble b;
-PImage radish;
-PImage corn;
-PImage friedegg;
-PImage orange;
-PImage watermelon;
-PImage frenchfries;
+PImage bub, ene;
+PImage radish, corn, friedegg, orange, watermelon, frenchfries;
 ArrayList<Displayable> displayMe;
 ArrayList<Moveable> moveMe;
 ArrayList<Collideable> coll;
@@ -16,21 +10,22 @@ ArrayList<Collideable> coll;
 void keyPressed(){
   if (keyCode == RIGHT){ //move right
     speedX = 15;
-    if(posX<=915){ // 1000-60-25 (half of bub)
+    if(posX <= 915){ // 1000-60-25 (half of bub)
       posX += speedX;
     }
     img = loadImage("Images/bubblun.png");
     right = true;
   }
+  
   if (keyCode == LEFT){ //move left
     speedX = -15;
-    if(posX>=40){
+    if(posX >= 40){
       posX += speedX;
     }
-    //img = loadImage("Images/bubblunReverse.png");
-    right = false;
     img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
+    right = false;
   }
+  
   if (keyCode == UP){ //trigger jump 
     touching = false;
     if (posY >= 50){
@@ -71,7 +66,6 @@ void setup(){
   a = new Player(30,height-50-20);
   Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
   if(g.level == 1){
-    //Super ratchet code
       //left rectangles
       Platform a = new Platform(30,250,100,20); platforms.add(a);
       Platform b = new Platform(30,350,100,20); platforms.add(b);
