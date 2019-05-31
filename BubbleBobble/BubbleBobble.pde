@@ -100,8 +100,20 @@ void draw(){
   textAlign(RIGHT);
   text("Level: "+g.level,width-30,35);
   textAlign(CENTER);
-  text("Time: "+g.getTime(),700,35);
-  
+  text("Time: "+g.getTime(),width/2,35);
+  fill(255,0,0);
+  if(a.lives==0){
+    fill(0,0,0);
+  }
+  rect(40,60,20,20);
+  if(a.lives==1){
+    fill(0,0,0);
+  }
+  rect(65,60,20,20);
+  if(a.lives==2){
+    fill(0,0,0);
+  }
+  rect(90,60,20,20);
   //Testing Purposes
   textSize(20);
   text("X: " + posX, 200, 35);
@@ -112,7 +124,7 @@ interface Displayable{
   void display();
 }
 
-interface Moveable{
+interface Moveable{           
   void move();
 }
 

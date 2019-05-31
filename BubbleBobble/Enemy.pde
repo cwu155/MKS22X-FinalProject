@@ -41,6 +41,16 @@ class Enemy implements Displayable, Moveable{
   }
   
   void checkBub(){
+  /*  if(a.getX() == eposX && touchPlatform){
+      int r = (int)random(2);
+      if(r==0){
+        facingR = false;
+        espeedX = -1.5;
+      }else{
+        facingR = true;
+        espeedX = 1.5;
+      }
+    }*/
     //If Bub is to the left, move towards the left
      if (a.getX() < eposX && touchPlatform){
        facingR = false;
