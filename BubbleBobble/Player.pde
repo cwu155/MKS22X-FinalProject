@@ -1,10 +1,11 @@
 float posX, posY, speedX, speedY;
 boolean left, right, up, touching, facingR = true;
+int lives;
 PImage img;
 
 class Player implements Displayable, Moveable, Collideable{
  ArrayList<Bubble> extendBubbles;
- int score, lives;
+ int score;
 
 
  Player(float x, float y){
@@ -22,6 +23,10 @@ class Player implements Displayable, Moveable, Collideable{
 
  float getY(){
    return posY;
+ }
+ 
+ int getLives(){
+   return lives;
  }
 
  void display(){
@@ -118,6 +123,16 @@ class Player implements Displayable, Moveable, Collideable{
    for(Item i : items){
      if((abs(i.getX() - posX)) < 50 && (abs(i.getY() - posY)) < 25){
        i.hitItem();
+       return true;
+     }
+   }
+   return false;
+ }
+ 
+ boolean touchingE(){ //enemy
+   for(Enemy e : enemies){
+     if((abs(e.getX() - posX)) < 50 && (abs(e.getY() - posY)) < 25){
+       lives--;
        return true;
      }
    }

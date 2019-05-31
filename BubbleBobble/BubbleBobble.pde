@@ -70,9 +70,27 @@ void setup(){
   g = new Game();
   a = new Player(30,height-50-20);
   Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
+  if(g.level == 1){
+    //Super ratchet code
+      //left rectangles
+      Platform a = new Platform(30,250,100,20); platforms.add(a);
+      Platform b = new Platform(30,350,100,20); platforms.add(b);
+      Platform c = new Platform(30,450,100,20); platforms.add(c);
+
+      //right rectangles
+      Platform d = new Platform(width-30-100,250,100,20); platforms.add(d);
+      Platform e = new Platform(width-30-100,350,100,20); platforms.add(e);
+      Platform f = new Platform(width-30-100,450,100,20); platforms.add(f);
+
+      //middle rectangles
+      Platform g = new Platform(200,250,600,20); platforms.add(g);
+      Platform h = new Platform(200,350,600,20); platforms.add(h);
+      Platform i = new Platform(200,450,600,20); platforms.add(i);
+  }
 }
 
 void draw(){
+  println(platforms.size());
   g.display();
   for(Platform p : platforms){
     p.display();
@@ -80,6 +98,7 @@ void draw(){
   a.display();
   a.move();
   a.touching();
+  a.touchingE();
   for (Bubble b : bubbles){
      b.display(); 
      b.move();
@@ -102,18 +121,26 @@ void draw(){
   textAlign(CENTER);
   text("Time: "+g.getTime(),width/2,35);
   fill(255,0,0);
-  if(a.lives==0){
-    fill(0,0,0);
-  }
   rect(40,60,20,20);
-  if(a.lives==1){
-    fill(0,0,0);
-  }
   rect(65,60,20,20);
-  if(a.lives==2){
-    fill(0,0,0);
-  }
   rect(90,60,20,20);
+  if(lives==2){
+    fill(0,0,0);
+    rect(90,60,20,20);
+    up = true;
+    
+  }
+  if(lives==1){
+    fill(0,0,0);
+    rect(65,60,20,20);
+    rect(90,60,20,20);
+  }
+  if(lives<=0){
+    fill(0,0,0);
+    rect(40,60,20,20);
+    rect(65,60,20,20);
+    rect(90,60,20,20);
+  }
   //Testing Purposes
   textSize(20);
   text("X: " + posX, 200, 35);
