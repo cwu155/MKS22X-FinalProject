@@ -40,20 +40,48 @@ class Enemy implements Displayable, Moveable{
     }
   }
   
+  void checkBub(){
+    //If Bub is to the left, move towards the left
+     if (a.getX() < eposX && touchPlatform){
+       facingR = false;
+       espeedX = -1.5;
+     }
+     
+    //If Bub is to the right, move towards the right
+     if (a.getX() > eposX && touchPlatform){
+       facingR = true;
+       espeedX = 1.5;
+     }
+     
+     //If Bub is below, move down
+     if (a.getY() > eposY){
+       espeedY = 5;
+     }
+     
+     //If Bub is above, move up when there's a platform nearby
+     if (a.getY() < eposY){
+      espeedX = 0;
+      espeedY -= 8;
+    }
+  }  
+  
   void move(){
     //Checks to see if enemy is touching any platform
      for (Platform p : platforms){
         touchingPlatform(p);
      }
-     
-     //If not on a platform and not on the ground, move!
-     if (!touchPlatform && !onGround()){
-       espeedY = 5;
-     }
+    
      
      //If touching platform, stop!
      if (touchPlatform){
        espeedY = 0;
+     }
+     
+     checkBub();
+     
+     //If not on a platform and not on the ground, move!
+     if (!touchPlatform && !onGround()){
+       espeedY = 5;
      }
      
      if (eposX <= 915 && eposX >= 40){
