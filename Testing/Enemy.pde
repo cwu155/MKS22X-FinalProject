@@ -1,126 +1,106 @@
 public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+boolean enemyHit;
 
 class Enemy implements Displayable, Moveable{
   PVector location, velocity;
-  float posX, posY, speedX, speedY;
-  boolean touchPlatform, facingR, headR;
+  float eposX, eposY, espeedX, espeedY;
+  boolean touchPlatform, facingR;
   PImage enemy;
 
-  Enemy(float x, float y){
+  Enemy(float x, float y, PImage enemy){
     location = new PVector(x,y);
     velocity = new PVector(0,1);
-    posX = x;
-    posY = y;
+    eposX = x;
+    eposY = y;
+    //speed = 10;
     facingR = true;
     enemy = loadImage("../BubbleBobble/Images/enemy1.gif");
   }
   
   float getX(){
-    return posX;
+    return eposX;
   }
   
   float getY(){
-    return posY;
+    return eposY;
   }
   
   boolean onGround(){
-   return (posY == 530);
-  }
-  
-  void bounds(){
-    if (location.x >= 915 || location.x <= 40){
-      velocity.x *= -1;
-    }
+   return (eposY == 530);
   }
   
   void display(){
-    if (facingR){
-      enemy = loadImage("../BubbleBobble/Images/enemy1.gif");
-    } else {
-      enemy = loadImage("../BubbleBobble/Images/enemyLeft.png");
+    if(!enemyHit){
+      if (!facingR){
+        enemy = loadImage("../BubbleBobble/Images/enemyLeft.png");
+      } else {
+        enemy = loadImage("../BubbleBobble/Images/enemy1.gif");
+      }
+      image(enemy, eposX, eposY, 50, 50);   
     }
-    image(enemy, location.x, location.y, 50, 50);
-  }
-  
-  //Should return where the nearest Platform is so it can jump
-  Platform nearestPlatform(){
-    return platforms.get(0);
   }
   
   void checkBub(){
-    //Yikes   
     //If Bub is to the left, move towards the left
-     if (a.getX() < location.x && touchPlatform){
+     if (a.getX() < eposX && touchPlatform){
        facingR = false;
-       velocity.x = -1.5;
+       espeedX = -1.5;
      }
      
     //If Bub is to the right, move towards the right
-     if (a.getX() > location.x && touchPlatform){
+     if (a.getX() > eposX && touchPlatform){
        facingR = true;
-       velocity.x = 1.5;
+       espeedX = 1.5;
      }
      
-    //If Bub and enemy are at equal x-coordinates, don't move
-    //Temporary because enemy should move to Bub's y-coordinate
-     //if (a.getX() == this.getX()){
-     //  posX += 0;
-     //  speedX = 0;
-     //}
-     
      //If Bub is below, move down
-     if (a.getY() > location.y){
-       velocity.y = 5;
+     if (a.getY() > eposY){
+       espeedY = 5;
      }
      
      //If Bub is above, move up when there's a platform nearby
-     if (a.getY() < location.y){
-      velocity.x = 0;
-      velocity.y -= 9;
+     if (a.getY() < eposY){
+      espeedX = 0;
+      espeedY -= 8;
     }
   }  
   
-  
   void move(){
-     //Checks to see if enemy is touching any platform
+    //Checks to see if enemy is touching any platform
      for (Platform p : platforms){
         touchingPlatform(p);
      }
-     
-     //Bounds
-     if (location.y >= 530){ //the ground
-       velocity.y = 0;
-       location.y = 530;
-     }
-   
-     if (location.y <= 50){ //top of the map
-       velocity.y = -9;
-       location.y = 50;
-     }  
+    
      
      //If touching platform, stop!
      if (touchPlatform){
-       velocity.y = 0;
+       espeedY = 0;
      }
      
-     //Follow Bub!
      checkBub();
      
      //If not on a platform and not on the ground, move!
-     if (!onGround() && !touchPlatform){
-       velocity.y = 5;
+     if (!touchPlatform && !onGround()){
+       espeedY = 5;
      }
- 
      
-     if (location.x <= 915 && location.x >= 40){
-       location.x += velocity.x;
-       location.y += velocity.y;
+     if (eposX <= 915 && eposX >= 40){
+       eposX += espeedX;
+       eposY += espeedY;
      }
+     
+  }
+  
+  void hitEnemy(){
+    Item food = new Item((int)eposX,(int)eposY,values[(int)random(values.length)]);
+    items.add(food);
+    enemyHit = true;
+    enemies.remove(0);
   }
   
   void touchingPlatform(Platform p){
-  float diffX = (location.x + 25) - (p.getX() + p.getWidth()/2);
-  float diffY = (location.y + 25) - (p.getY() + p.getHeight()/2);
+  float diffX = (eposX + 25) - (p.getX() + p.getWidth()/2);
+  float diffY = (eposY + 25) - (p.getY() + p.getHeight()/2);
   
   //Minimum distances for the player/platform to collide
   float totalWidths = 25 + p.getWidth()/2;
@@ -136,7 +116,7 @@ class Enemy implements Displayable, Moveable{
       
       if (overlapX >= overlapY){
         if (diffY <= 0){
-          location.y -= (overlapY + 1); //the +1 is for graphics idk
+          eposY -= (overlapY + 1); //the +1 is for graphics idk
           touchPlatform = true;
           
           //Testing purposes, makes the platform that enemy is on blue
@@ -146,6 +126,5 @@ class Enemy implements Displayable, Moveable{
     }
   }
  }
-  
   
 }
