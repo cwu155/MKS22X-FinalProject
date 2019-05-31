@@ -90,7 +90,6 @@ void setup(){
 }
 
 void draw(){
-  println(platforms.size());
   g.display();
   for(Platform p : platforms){
     p.display();
@@ -127,19 +126,20 @@ void draw(){
   if(lives==2){
     fill(0,0,0);
     rect(90,60,20,20);
-    up = true;
-    
+ //   a.setXY(30,height-50-20);
   }
   if(lives==1){
     fill(0,0,0);
     rect(65,60,20,20);
     rect(90,60,20,20);
+  //  a.setXY(30,height-50-20);
   }
   if(lives<=0){
     fill(0,0,0);
     rect(40,60,20,20);
     rect(65,60,20,20);
     rect(90,60,20,20);
+ //   a.setXY(30,height-50-20);
   }
   //Testing Purposes
   textSize(20);

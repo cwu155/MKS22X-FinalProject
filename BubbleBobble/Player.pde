@@ -28,6 +28,11 @@ class Player implements Displayable, Moveable, Collideable{
  int getLives(){
    return lives;
  }
+ 
+ void setXY(int x, int y){
+   posX = x;
+   posY = y;
+ }
 
  void display(){
    image(img, posX, posY, 50, 50);
