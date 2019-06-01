@@ -84,6 +84,7 @@ void setup(){
 }
 
 void draw(){
+  println(lives);
   g.display();
   for(Platform p : platforms){
     p.display();

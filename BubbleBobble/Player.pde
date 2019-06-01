@@ -1,6 +1,6 @@
 float posX, posY, speedX, speedY;
 boolean left, right, up, touching, facingR = true;
-int lives;
+int lives, count=0;
 PImage img;
 
 class Player implements Displayable, Moveable, Collideable{
@@ -136,8 +136,15 @@ class Player implements Displayable, Moveable, Collideable{
  
  boolean touchingE(){ //enemy
    for(Enemy e : enemies){
-     if((abs(e.getX() - posX)) < 50 && (abs(e.getY() - posY)) < 25){
-       lives--;
+     if((abs(e.getX() - posX)) < 50 && (abs(e.getY() - posY)) < 50){
+       count++;
+       if(lives==3){ 
+         lives = 2;
+       }
+       if(count>300){
+         lives--;
+         count = 0;
+       }
        return true;
      }
    }
