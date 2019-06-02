@@ -28,8 +28,17 @@ class Game implements Displayable{
       fill(255,192,203);
       noStroke();
 
-      if((enemies.size() == 0 && items.size() == 0) || lives <= 0){
+      if(enemies.size() == 0 && items.size() == 0){
         running = false;
+        fill(255,0,0);
+        textSize(50);
+        text("You win!",width/2,150);
+      }
+      if(lives<=0){
+        running = false;
+        fill(255,0,0);
+        textSize(50);
+        text("You lose!",width/2,150);
       }
     }
   }
