@@ -29,10 +29,14 @@ class Game implements Displayable{
       noStroke();
 
       if(enemies.size() == 0 && items.size() == 0){
-        running = false;
-        fill(255,0,0);
-        textSize(50);
-        text("You win!",width/2,150);
+      /*  if(level<2){
+          level++;
+        }else{*/
+          running = false;
+          fill((int)random(256),(int)random(256),(int)random(256));
+          textSize(50);
+          text("You win!",width/2,150);
+       // }
       }
       if(lives<=0){
         running = false;
