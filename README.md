@@ -13,9 +13,9 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 ---
 
 ### **Bugs**
-- As the game progresses, the time gets slower and so everything in-game gets slower as well.
 - Bubbles are still blown outside of map
 - Bubble -> enemy -> food only works for 1 enemy?
+- Can't add new levels
 
 ---
 
@@ -73,10 +73,12 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 - T: Added game end (when no enemies + no bubbles, since only 1 level right now)
 
 #### 5/31/19
+- T: Added health bars
 
 #### 6/1/19
 
 #### 6/2/19
+- T: Added win/lose messages
 
 #### 6/3/19
 
