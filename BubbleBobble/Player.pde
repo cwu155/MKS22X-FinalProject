@@ -147,7 +147,7 @@ class Player implements Displayable, Moveable, Collideable{
        if(lives==3){ 
          lives = 2;
        }
-       if(count>300){
+       if(count>300){ //bub doesnt lose lives for 300 frames
          lives--;
          count = 0;
        }
