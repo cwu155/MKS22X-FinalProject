@@ -66,6 +66,7 @@ void setup(){
   a = new Player(30,height-50-20);
   if(g.level == 1){
       Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
+  
       //left rectangles
       Platform a = new Platform(30,250,100,20); platforms.add(a);
       Platform b = new Platform(30,350,100,20); platforms.add(b);

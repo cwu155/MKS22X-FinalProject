@@ -47,12 +47,15 @@ class Enemy implements Displayable, Moveable{
     //    espeedX = 1.5;
     //  }
     //}
+   
+ 
     
     //If Bub is to the left, move towards the left
      if (a.getX() < eposX && touchPlatform){
        facingR = false;
        espeedX = -1.5;
      }
+    
      
     //If Bub is to the right, move towards the right
      if (a.getX() > eposX && touchPlatform){
