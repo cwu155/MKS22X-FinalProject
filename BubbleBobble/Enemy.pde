@@ -3,6 +3,7 @@ boolean enemyHit;
 
 class Enemy implements Displayable, Moveable{
   float eposX, eposY, espeedX, espeedY, randSpeed;
+  long lastTurn;
   PVector location, velocity;
   boolean touchPlatform, facingR;
   PImage enemy;
@@ -38,10 +39,11 @@ class Enemy implements Displayable, Moveable{
     }
   }
   
-  void changeDir(){ //unused for now
-    long lastTurn = System.currentTimeMillis();
-    if (System.currentTimeMillis() - lastTurn >= 3000) {
-    velocity.x *= -1;
+  void jump(){ //unused for now
+    println("jump!");
+    lastTurn = System.currentTimeMillis();
+    if (System.currentTimeMillis() - lastTurn >= 100) {
+    velocity.y -= 8;
     lastTurn = System.currentTimeMillis();
     }  
   }  
@@ -64,7 +66,6 @@ class Enemy implements Displayable, Moveable{
        velocity.y = 0;
      }
      
-     
      if (location.x > 915 || location.x < 40){
        velocity.x *= -1;
      }
@@ -73,13 +74,12 @@ class Enemy implements Displayable, Moveable{
      if (!touchPlatform && !onGround()){
        velocity.y = 5;
      }
+     
    
      location.x += velocity.x;
      //println("Location: " + location.y);
      location.y += velocity.y;
-     
-     //changeDir();
-     
+      
   }
   
   void hitEnemy(){
