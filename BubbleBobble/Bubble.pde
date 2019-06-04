@@ -9,12 +9,13 @@ Bubble(float x, float y, float s){
     speed = s;
 }
 
-  void display(){
-    fill(0,255,0);
-    ellipse(posX,posY,25,25);
+  void display(){  
+      fill(0,255,0);
+      ellipse(posX,posY,25,25);
   }
 
   void move(){
+    touching();
     //if within length of map, moves left or right
     if(posX < width-30-12.5 && posX > 30+12.5){
       posX += speed;
@@ -26,10 +27,12 @@ Bubble(float x, float y, float s){
   
   boolean touching(){
    for(Enemy e: enemies){
+     e.changeHit(false);
      if(this.posX + 25 > e.getX() &&
         this.posY + 25 > e.getY() &&
         this.posX - 25 < e.getX() + 50 &&
         this.posY - 25 < e.getY() + 50){
+        e.changeHit(true);
         e.hitEnemy();
         return true;
        }
@@ -42,16 +45,8 @@ Bubble(float x, float y, float s){
 //Sets speed to 3
  void spawn(){
    if (right){
-     if(a.getX()>900){
-       bubbles.add(new Bubble(950,a.getY()+25, 3));
-     }else{
-      bubbles.add(new Bubble(a.getX()+50,a.getY()+25, 3));
-     }
+    bubbles.add(new Bubble(a.getX()+50,a.getY()+25, 3));
    } else {
-     if(a.getX()<50){
-       bubbles.add(new Bubble(50,a.getY(),-3));
-     }else{
-      bubbles.add(new Bubble(a.getX()-50,a.getY()+25,-3));
-     }
+    bubbles.add(new Bubble(a.getX()-50,a.getY()+25,-3));
    }
   }

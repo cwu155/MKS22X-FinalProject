@@ -1,6 +1,6 @@
 float posX, posY, speedX, speedY;
 boolean left, right, up, touching, facingR = true;
-int lives, count=0;
+int lives;
 PImage img;
 
 class Player implements Displayable, Moveable, Collideable{
@@ -9,7 +9,7 @@ class Player implements Displayable, Moveable, Collideable{
 
 
  Player(float x, float y){
-   img = loadImage("Images/bubblun.png");
+   img = loadImage("../BubbleBobble/Images/bubblun.png");
    posX = x;
    posY = y;
    score = 0;
@@ -87,19 +87,19 @@ class Player implements Displayable, Moveable, Collideable{
    
    
    //Trigger jump
-    if (up){
-        speedY = -9;  //speedY determines how quick Bub's jump is
+   if (up){
+        speedY = -8;  //speedY determines how quick Bub's jump is
         //if (right){
-        //  speedX = 1.5;
-        //} 
-        //if (left) {
-        //  speedX = -1.5;
+        //  speedX = 2;
+        //} else {
+        //  speedX = -2;
         //}
-        //posX += speedX;
+        //if (posX <= 915 || posX >= 40){
+        //  posX += speedX;
+        //}
      }
    
    //Change y position
-   //posX += speedX;
    posY += speedY;
   }
  
@@ -144,15 +144,8 @@ class Player implements Displayable, Moveable, Collideable{
  
  boolean touchingE(){ //enemy
    for(Enemy e : enemies){
-     if((abs(e.getX() - posX)) < 50 && (abs(e.getY() - posY)) < 50){
-       count++;
-       if(lives==3){ 
-         lives = 2;
-       }
-       if(count>300){ //bub doesnt lose lives for 300 frames
-         lives--;
-         count = 0;
-       }
+     if((abs(e.getX() - posX)) < 50 && (abs(e.getY() - posY)) < 25){
+       lives--;
        return true;
      }
    }

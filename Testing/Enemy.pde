@@ -51,9 +51,9 @@ class Enemy implements Displayable, Moveable{
   void update(){
       float randTime = (float)Math.random() * ((12-5) + 1) + 5;
       if (millis() - lastTurn >= randTime * 1000 * abs(randSpeed)){
-        //if (velocity.x > 0){velocity.x = 2;} else {velocity.x = -2;}
-        velocity.y = -70;
-        //frameRate(45);
+        if(touchPlatform && location.x <= 200){
+          velocity.y = -70;
+        }
         if (onGround()) velocity.y = -100;
         lastTurn = millis();
       }
@@ -90,7 +90,6 @@ class Enemy implements Displayable, Moveable{
      
      update();
      
-     
      location.x += velocity.x;
      //println("Location: " + location.y);
      location.y += velocity.y;
@@ -98,7 +97,6 @@ class Enemy implements Displayable, Moveable{
   }
   
   void hitEnemy(){
-    println("Foodoodododoodo!!!");
     Item food = new Item((int)this.getX(),(int)this.getY(),values[(int)random(values.length)]);
     items.add(food);
     enemies.remove(this);
