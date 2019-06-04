@@ -2,8 +2,8 @@ public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 boolean enemyHit;
 
 class Enemy implements Displayable, Moveable{
-  float randSpeed;
   PVector location, velocity;
+  float randSpeed;
   int lastTurn;
   boolean touchPlatform, facingR;
   PImage enemy;
@@ -11,6 +11,7 @@ class Enemy implements Displayable, Moveable{
   Enemy(float x, float y){
     location = new PVector(x,y);
     randSpeed = (float)Math.random() * (4+1) + -2;
+    if (randSpeed > 0){randSpeed = 2;} else {randSpeed = -2;}
     velocity = new PVector(randSpeed,randSpeed);
     if (randSpeed > 0){facingR = true;} else {facingR = false;}
     lastTurn = millis();
@@ -40,12 +41,14 @@ class Enemy implements Displayable, Moveable{
   }
   
   void update(){
-      float randTime = (float)Math.random() * ((4-1) + 1) + 1;
-      if (millis() - lastTurn >= randTime * 10000){
+      float randTime = (float)Math.random() * ((6-1) + 1) + 1;
+      if (millis() - lastTurn >= randTime * 1000){
         if (velocity.x > 0){velocity.x = 2;} else {velocity.x = -2;}
         velocity.y = -70;
+        if (onGround()) velocity.y = -100;
         lastTurn = millis();
       }
+      //location.y -= velocity.y;
   }
     
   
@@ -79,12 +82,9 @@ class Enemy implements Displayable, Moveable{
      update();
      
      
-   
      location.x += velocity.x;
      //println("Location: " + location.y);
      location.y += velocity.y;
-     
-     //changeDir();
      
   }
   
