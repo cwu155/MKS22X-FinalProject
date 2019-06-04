@@ -23,7 +23,7 @@ void keyPressed(){
       posX += speedX;
     }
     img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
-    right = false;
+    left = true;
   }
   
   if (keyCode == UP){ //trigger jump 
@@ -40,9 +40,16 @@ void keyPressed(){
 
 void keyReleased(){
     switch (keyCode){
+    case 37:
+      left = false;
+    
     case 38://up
       up = false;
+      
+    case 39:
+      right = false;
     }
+   
 }
 
 void setup(){
