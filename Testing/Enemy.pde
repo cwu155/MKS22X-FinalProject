@@ -88,6 +88,7 @@ class Enemy implements Displayable, Moveable{
         touchingPlatform(p);
      }   
      
+     
      //If touching platform, stop!
      if (touchPlatform){
        velocity.y = 0;
@@ -95,18 +96,22 @@ class Enemy implements Displayable, Moveable{
      
      //Follows Bub!
      checkBub();
+
      
      //If not on a platform and not on the ground, move!
      if (!touchPlatform && !onGround()){
        velocity.y = 5;
      }
      
-     
-     
-     if (location.x <= 915 && location.x >= 40){
+      if (location.x > 915 || location.x < 40){
+       println("out of bounds :(");
+       velocity.x *= -5;
+     }
+   
+     //if (location.x <= 915 && location.x >= 40){
        location.x += velocity.x;
        location.y += velocity.y;
-     }
+     //}
      
   }
   

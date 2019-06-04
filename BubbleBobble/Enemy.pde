@@ -2,7 +2,7 @@ public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 boolean enemyHit;
 
 class Enemy implements Displayable, Moveable{
-  float eposX, eposY, espeedX, espeedY;
+  float eposX, eposY, espeedX, espeedY, randSpeed;
   boolean touchPlatform, facingR;
   PImage enemy;
 
@@ -47,21 +47,29 @@ class Enemy implements Displayable, Moveable{
     //    espeedX = 1.5;
     //  }
     //}
+    
+    if (randSpeed < 1){
+     facingR = false;
+     espeedX = -1.5;
+   } else {
+     facingR = true;
+     espeedX = 1.5;
+   }
    
  
     
     //If Bub is to the left, move towards the left
-     if (a.getX() < eposX && touchPlatform){
-       facingR = false;
-       espeedX = -1.5;
-     }
+     //if (a.getX() < eposX && touchPlatform){
+     //  facingR = false;
+     //  espeedX = -1.5;
+     //}
     
      
     //If Bub is to the right, move towards the right
-     if (a.getX() > eposX && touchPlatform){
-       facingR = true;
-       espeedX = 1.5;
-     }
+     //if (a.getX() > eposX && touchPlatform){
+     //  facingR = true;
+     //  espeedX = 1.5;
+     //}
      
      //If Bub is below, move down
      if (a.getY() > eposY){
@@ -94,10 +102,14 @@ class Enemy implements Displayable, Moveable{
        espeedY = 5;
      }
      
-     if (eposX <= 915 && eposX >= 40){
+     if (eposX > 915 || eposX < 40){
+       espeedX *= -1;
+     }
+     
+     //if (eposX <= 915 && eposX >= 40){
        eposX += espeedX;
        eposY += espeedY;
-     }
+     //}
      
   }
   
