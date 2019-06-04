@@ -91,10 +91,13 @@ class Player implements Displayable, Moveable, Collideable{
         speedY = -9;  //speedY determines how quick Bub's jump is
         if (right){
           speedX = 2;
-        } else {
+          posX += speedX;
+        } 
+        if(left){
           speedX = -2;
+          posX += speedX;
         }
-        posX += speedX;
+        
      }
    
    //Change y position

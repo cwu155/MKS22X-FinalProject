@@ -15,6 +15,7 @@ void keyPressed(){
     }
     img = loadImage("Images/bubblun.png");
     right = true;
+    left = false;
   }
   
   if (keyCode == LEFT){ //move left
@@ -24,6 +25,7 @@ void keyPressed(){
     }
     img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
     right = false;
+    left = true;
   }
   
   if (keyCode == UP){ //trigger jump 
@@ -66,7 +68,9 @@ void setup(){
   a = new Player(30,height-50-20);
   if(g.level == 1){
       Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
-  
+     // Enemy e2 = new Enemy(width/2,250,ene); enemies.add(e2);
+    //  Enemy e3 = new Enemy(width/2,450,ene); enemies.add(e3);
+    
       //left rectangles
       Platform a = new Platform(30,250,100,20); platforms.add(a);
       Platform b = new Platform(30,350,100,20); platforms.add(b);
