@@ -1,7 +1,7 @@
 Game g;
 Player a;
 Bubble b;
-PImage bub, ene;
+PImage bub;
 PImage radish, corn, friedegg, orange, watermelon, frenchfries;
 ArrayList<Displayable> displayMe;
 ArrayList<Moveable> moveMe;
@@ -49,7 +49,6 @@ void setup(){
   size(1000,600);
   background(255);
   bub = loadImage("../BubbleBobble/Images/bubblun.png");
-  ene = loadImage("../BubbleBobble/Images/enemy1.gif");
   radish = loadImage("../BubbleBobble/Images/radish.png");
   corn = loadImage("../BubbleBobble/Images/corn.png");
   friedegg = loadImage("../BubbleBobble/Images/egg.png");
