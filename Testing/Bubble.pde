@@ -26,10 +26,13 @@ Bubble(float x, float y, float s){
   
   boolean touching(){
    for(Enemy e: enemies){
+     e.changeHit(false);
+     println(e.enemyHit());
      if(this.posX + 25 > e.getX() &&
         this.posY + 25 > e.getY() &&
         this.posX - 25 < e.getX() + 50 &&
         this.posY - 25 < e.getY() + 50){
+        e.changeHit(true);
         e.hitEnemy();
         return true;
        }

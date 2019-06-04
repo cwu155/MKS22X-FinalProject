@@ -1,20 +1,20 @@
 public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-boolean enemyHit;
+//boolean enemyHit;
 
 class Enemy implements Displayable, Moveable{
   PVector location, velocity;
   float randSpeed;
   int lastTurn;
-  boolean touchPlatform, facingR;
+  boolean touchPlatform, facingR, enemyHit;
   PImage enemy;
 
   Enemy(float x, float y){
     location = new PVector(x,y);
     randSpeed = (float)Math.random() * (4+1) + -2;
-    if (randSpeed > 0){randSpeed = 2;} else {randSpeed = -2;}
     velocity = new PVector(randSpeed,randSpeed);
     if (randSpeed > 0){facingR = true;} else {facingR = false;}
     lastTurn = millis();
+    enemyHit = false;
   }
   
   float getX(){
@@ -23,6 +23,14 @@ class Enemy implements Displayable, Moveable{
   
   float getY(){
     return location.y;
+  }
+  
+  void changeHit(Boolean hit){
+    enemyHit = hit;
+  }
+  
+  boolean enemyHit(){
+    return enemyHit;
   }
   
   boolean onGround(){
@@ -41,10 +49,11 @@ class Enemy implements Displayable, Moveable{
   }
   
   void update(){
-      float randTime = (float)Math.random() * ((6-1) + 1) + 1;
-      if (millis() - lastTurn >= randTime * 1000){
-        if (velocity.x > 0){velocity.x = 2;} else {velocity.x = -2;}
+      float randTime = (float)Math.random() * ((12-5) + 1) + 5;
+      if (millis() - lastTurn >= randTime * 1000 * abs(randSpeed)){
+        //if (velocity.x > 0){velocity.x = 2;} else {velocity.x = -2;}
         velocity.y = -70;
+        //frameRate(45);
         if (onGround()) velocity.y = -100;
         lastTurn = millis();
       }
@@ -89,10 +98,10 @@ class Enemy implements Displayable, Moveable{
   }
   
   void hitEnemy(){
-    Item food = new Item((int)location.x,(int)location.y,values[(int)random(values.length)]);
+    println("Foodoodododoodo!!!");
+    Item food = new Item((int)this.getX(),(int)this.getY(),values[(int)random(values.length)]);
     items.add(food);
-    enemyHit = true;
-    enemies.remove(0);
+    enemies.remove(this);
   }
   
   void touchingPlatform(Platform p){
