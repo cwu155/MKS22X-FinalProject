@@ -42,9 +42,16 @@ void keyPressed(){
 
 void keyReleased(){
     switch (keyCode){
+    case 37:
+      left = false;
+    
     case 38://up
       up = false;
+      
+    case 39:
+      right = false;
     }
+   
 }
 
 void setup(){
