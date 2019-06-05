@@ -1,6 +1,7 @@
+boolean running;
 class Game implements Displayable{
   int level, count=0;
-  boolean running;
+  
 
   Game(){
     level = 1;

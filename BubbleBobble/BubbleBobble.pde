@@ -3,42 +3,41 @@ Player a;
 Bubble b;
 PImage bub;
 PImage radish, corn, friedegg, orange, watermelon, frenchfries;
-ArrayList<Displayable> displayMe;
-ArrayList<Moveable> moveMe;
-ArrayList<Collideable> coll;
 
 void keyPressed(){
-  if (keyCode == RIGHT){ //move right
-    speedX = 15;
-    if(posX <= 915){ // 1000-60-25 (half of bub)
-      posX += speedX;
+  if(running){
+    if (keyCode == RIGHT){ //move right
+      speedX = 15;
+      if(posX <= 915){ // 1000-60-25 (half of bub)
+        posX += speedX;
+      }
+      img = loadImage("../BubbleBobble/Images/bubblun.png");
+      right = true;
+      left = false;
+      a.changeDir(true);
     }
-    img = loadImage("../BubbleBobble/Images/bubblun.png");
-    right = true;
-    left = false;
-    a.changeDir(true);
-  }
+    
+    if (keyCode == LEFT){ //move left
+      speedX = -15;
+      if(posX >= 40){
+        posX += speedX;
+      }
+      img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
+      right = false;
+      left = true;
+      a.changeDir(false);
+    }
+    
+    if (keyCode == UP){ //trigger jump 
+      touching = false;
+      if (posY >= 50){
+        up = true;
+      }
+     } 
   
-  if (keyCode == LEFT){ //move left
-    speedX = -15;
-    if(posX >= 40){
-      posX += speedX;
+    if(keyCode == 32){ //space
+      spawn();
     }
-    img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
-    right = false;
-    left = true;
-    a.changeDir(false);
-  }
-  
-  if (keyCode == UP){ //trigger jump 
-    touching = false;
-    if (posY >= 50){
-      up = true;
-    }
-   } 
-
-  if(keyCode == 32){ //space
-    spawn();
   }
 }
 
