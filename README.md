@@ -10,7 +10,8 @@
 git clone git@github.com:cwu155/MKS22X-FinalProject.git
 ```
 2. Open the Sketch folder in Processing.
-3. Run.
+
+3. Run. (directions are shown after running)
 ---
 
 ### **Bugs**
@@ -88,4 +89,4 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 - T: Fixed bubble movement (again)
 - T: Fixed player movement (cannot hug the wall)
 - T: Bubbles + player cannot move after losing (could still win if they moved)
-- T: Added levels!
+- T: Added levels and maps for level 2 and 3.
