@@ -123,7 +123,7 @@ class Enemy implements Displayable, Moveable{
           touchPlatform = true;
           
           //Testing purposes, makes the platform that enemy is on green
-          p.changeColor(p, this);
+        //  p.changeColor(p, this);
         }
       }
     }
