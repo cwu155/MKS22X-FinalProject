@@ -1,5 +1,6 @@
 float posX, posY, speedX, speedY;
 boolean left, right, up, touching, facingR = true;
+int lives, count=0, upCount=0;
 PImage img;
 
 class Player implements Displayable, Moveable, Collideable{
@@ -131,7 +132,7 @@ class Player implements Displayable, Moveable, Collideable{
           touching = true;
           
           //Testing purposes, makes the platform that Bub is on red
-          p.changeColor(p);
+         // p.changeColor(p);
         }
       }
     }

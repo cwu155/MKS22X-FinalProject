@@ -15,11 +15,8 @@ void keyPressed(){
     }
     img = loadImage("../BubbleBobble/Images/bubblun.png");
     right = true;
-<<<<<<< HEAD
     left = false;
     a.changeDir(true);
-=======
->>>>>>> 09b7833540d42e567b9206fdeb957447979cc598
   }
   
   if (keyCode == LEFT){ //move left
@@ -29,11 +26,8 @@ void keyPressed(){
     }
     img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
     right = false;
-<<<<<<< HEAD
     left = true;
     a.changeDir(false);
-=======
->>>>>>> 09b7833540d42e567b9206fdeb957447979cc598
   }
   
   if (keyCode == UP){ //trigger jump 
@@ -75,30 +69,23 @@ void setup(){
   a = new Player(30,height-50-20);
   
   if(g.level == 1){
-<<<<<<< HEAD
-      Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
-      Enemy e2 = new Enemy(width/2,250,ene); enemies.add(e2);
-    //  Enemy e3 = new Enemy(width/2,450,ene); enemies.add(e3);
-=======
->>>>>>> 09b7833540d42e567b9206fdeb957447979cc598
-    
     Enemy e1 = new Enemy(width/2,60); enemies.add(e1);
     Enemy e2 = new Enemy(width/2,60); enemies.add(e2);
     Enemy e3 = new Enemy(width/2,60); enemies.add(e3);
-      //left rectangles
-      Platform a = new Platform(30,250,100,20); platforms.add(a);
-      Platform b = new Platform(30,350,100,20); platforms.add(b);
-      Platform c = new Platform(30,450,100,20); platforms.add(c);
+    //left rectangles
+    Platform a = new Platform(30,250,100,20); platforms.add(a);
+    Platform b = new Platform(30,350,100,20); platforms.add(b);
+    Platform c = new Platform(30,450,100,20); platforms.add(c);
 
-      //right rectangles
-      Platform d = new Platform(width-30-100,250,100,20); platforms.add(d);
-      Platform e = new Platform(width-30-100,350,100,20); platforms.add(e);
-      Platform f = new Platform(width-30-100,450,100,20); platforms.add(f);
+    //right rectangles
+    Platform d = new Platform(width-30-100,250,100,20); platforms.add(d);
+    Platform e = new Platform(width-30-100,350,100,20); platforms.add(e);
+    Platform f = new Platform(width-30-100,450,100,20); platforms.add(f);
 
-      //middle rectangles
-      Platform g = new Platform(200,250,600,20); platforms.add(g);
-      Platform h = new Platform(200,350,600,20); platforms.add(h);
-      Platform i = new Platform(200,450,600,20); platforms.add(i);
+    //middle rectangles
+    Platform g = new Platform(200,250,600,20); platforms.add(g);
+    Platform h = new Platform(200,350,600,20); platforms.add(h);
+    Platform i = new Platform(200,450,600,20); platforms.add(i);
   }
 }
 

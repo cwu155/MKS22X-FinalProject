@@ -29,7 +29,7 @@ class Game implements Displayable{
       noStroke();
 
       if(enemies.size() == 0 && items.size() == 0){
-      /*  if(level<2){
+       /* if(level<2){
           level++;
         }else{*/
           running = false;
