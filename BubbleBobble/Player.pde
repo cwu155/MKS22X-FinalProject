@@ -152,7 +152,14 @@ class Player implements Displayable, Moveable, Collideable{
  boolean touchingE(){ //enemy
    for(Enemy e : enemies){
      if((abs(e.getX() - posX)) < 50 && (abs(e.getY() - posY)) < 25){
-       lives--;
+       if(lives==3){
+         lives=2;
+       }
+       count++;
+       if(count>100){
+         lives--;
+         count = 0;
+       }
        return true;
      }
    }
