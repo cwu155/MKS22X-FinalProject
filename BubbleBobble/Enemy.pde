@@ -1,5 +1,4 @@
 public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-//boolean enemyHit;
 
 class Enemy implements Displayable, Moveable{
   PVector location, velocity;

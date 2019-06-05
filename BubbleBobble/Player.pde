@@ -4,7 +4,6 @@ int lives, count=0, upCount=0;
 PImage img;
 
 class Player implements Displayable, Moveable, Collideable{
- ArrayList<Bubble> extendBubbles;
  int score;
 
 
@@ -14,7 +13,6 @@ class Player implements Displayable, Moveable, Collideable{
    posY = y;
    score = 0;
    lives = 3;
-   extendBubbles = new ArrayList<Bubble>();
  }
 
  float getX(){
@@ -27,11 +25,6 @@ class Player implements Displayable, Moveable, Collideable{
  
  int getLives(){
    return lives;
- }
- 
- void setXY(int x, int y){
-   posX = x;
-   posY = y;
  }
 
  void display(){
@@ -168,6 +161,10 @@ class Player implements Displayable, Moveable, Collideable{
  
  void addPoints(int p){
    score+=p;
+ }
+ 
+ void removePoints(){
+   score = 0;
  }
 
 }

@@ -47,6 +47,7 @@ void keyPressed(){
       bubbles.clear();
       platforms.clear();
       items.clear();
+      a.removePoints();
       Enemy e1 = new Enemy(width/2,60); enemies.add(e1);
       Enemy e2 = new Enemy(width/2,60); enemies.add(e2);
       Enemy e3 = new Enemy(width/2,60); enemies.add(e3);
@@ -71,6 +72,7 @@ void keyPressed(){
       bubbles.clear();
       platforms.clear();
       items.clear();
+      a.removePoints();
       Enemy e1 = new Enemy(width/2,60); enemies.add(e1);
       Enemy e2 = new Enemy(width/2,250); enemies.add(e2);
       Enemy e3 = new Enemy(width/2,450); enemies.add(e3);
@@ -133,7 +135,7 @@ void draw(){
   for (Bubble b : bubbles){
      b.display(); 
      b.move();
-     //b.touching();
+     b.touching();
   }
   for (Enemy e : enemies){
      e.display(); 
