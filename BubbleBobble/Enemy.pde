@@ -1,5 +1,4 @@
 public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-//boolean enemyHit;
 
 class Enemy implements Displayable, Moveable{
   PVector location, velocity;
@@ -123,7 +122,7 @@ class Enemy implements Displayable, Moveable{
           touchPlatform = true;
           
           //Testing purposes, makes the platform that enemy is on green
-          p.changeColor(p, this);
+        //  p.changeColor(p, this);
         }
       }
     }

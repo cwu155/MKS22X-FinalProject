@@ -15,13 +15,15 @@ Bubble(float x, float y, float s){
   }
 
   void move(){
-    touching();
-    //if within length of map, moves left or right
-    if(posX < width-30-12.5 && posX > 30+12.5){
-      posX += speed;
-    }else{
-      //else move up
-      posY -= abs(speed);
+    if(running){
+      touching();
+      //if within length of map, moves left or right
+      if(posX < width-30-12.5 && posX > 30+12.5){
+        posX += speed;
+      }else{
+        //else move up
+        posY -= abs(speed);
+      }
     }
   }
   
@@ -44,9 +46,17 @@ Bubble(float x, float y, float s){
 //Spawns a bubble, this is outside the Bubble class btw!!
 //Sets speed to 3
  void spawn(){
-   if (right){
-    bubbles.add(new Bubble(a.getX()+50,a.getY()+25, 3));
+   if (a.getDir()){
+     if(a.getX()>900){
+       bubbles.add(new Bubble(950,a.getY()+25, 3));
+     }else{
+      bubbles.add(new Bubble(a.getX()+50,a.getY()+25, 3));
+     }
    } else {
-    bubbles.add(new Bubble(a.getX()-50,a.getY()+25,-3));
+     if(a.getX()<50){
+       bubbles.add(new Bubble(50,a.getY(),-3));
+     }else{
+      bubbles.add(new Bubble(a.getX()-50,a.getY()+25,-3));
+     }
    }
   }
