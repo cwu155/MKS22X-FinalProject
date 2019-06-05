@@ -1,6 +1,6 @@
 float posX, posY, speedX, speedY;
 boolean left, right, up, touching, facingR = true;
-int lives, count=0;
+int lives, count=0, upCount=0;
 PImage img;
 
 class Player implements Displayable, Moveable, Collideable{
@@ -89,6 +89,13 @@ class Player implements Displayable, Moveable, Collideable{
    //Trigger jump
     if (up){
         speedY = -9;  //speedY determines how quick Bub's jump is
+        upCount++;
+        if(upCount>60){
+          speedY = 9;
+          if(touching){
+            upCount = 0;
+          }
+        }
         //if (right){
         //  speedX = 1.5;
         //} 

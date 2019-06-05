@@ -41,7 +41,7 @@ Bubble(float x, float y, float s){
 //Spawns a bubble, this is outside the Bubble class btw!!
 //Sets speed to 3
  void spawn(){
-   if (right){
+   if (a.getDir()){
      if(a.getX()>900){
        bubbles.add(new Bubble(950,a.getY()+25, 3));
      }else{
