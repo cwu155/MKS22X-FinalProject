@@ -3,6 +3,8 @@ Player a;
 Bubble b;
 PImage bub;
 PImage radish, corn, friedegg, orange, watermelon, frenchfries;
+boolean menu = true;
+int bubbleCount=0;
 
 void keyPressed(){
   if(running){
@@ -40,6 +42,7 @@ void keyPressed(){
     }
     
     if(key == '1'){
+      menu = false;
       enemies.clear();
       bubbles.clear();
       platforms.clear();
@@ -63,6 +66,7 @@ void keyPressed(){
       Platform i = new Platform(200,450,600,20); platforms.add(i);
     }
     if(key == '2'){
+      menu = false;
       enemies.clear();
       bubbles.clear();
       platforms.clear();
@@ -137,6 +141,16 @@ void draw(){
   }
   for(Item i : items){
     i.display();
+  }
+  if(menu){
+    fill(255,192,203);
+    textSize(25);
+    text("Welcome to Bubble Bobble!",width/2,height/2-60);
+    textSize(15);
+    text("To play, press the spacebar to blow a bubble and the arrow keys to move your dragon",width/2,height/2+60);
+    text("Use the number keys to switch between levels",width/2,height/2+100);
+    text("Your objective is to hit the enemies with the bubbles and collect the food items left behind for points",width/2,height/2+140);
+    text("You only have 3 lives. Have fun!",width/2,height/2+180);
   }
   fill(0,0,0);
   textSize(25);
