@@ -73,23 +73,19 @@ void keyPressed(){
       platforms.clear();
       items.clear();
       a.removePoints();
-      Enemy e1 = new Enemy(width/2,60); enemies.add(e1);
-      Enemy e2 = new Enemy(width/2,250); enemies.add(e2);
-      Enemy e3 = new Enemy(width/2,450); enemies.add(e3);
-     //left rectangles
-      Platform a = new Platform(30,250,100,20); platforms.add(a);
-      Platform b = new Platform(30,350,100,20); platforms.add(b);
-      Platform c = new Platform(30,450,100,20); platforms.add(c);
-  
-      //right rectangles
-      Platform d = new Platform(width-30-150,250,100,20); platforms.add(d);
-      Platform e = new Platform(width-30-100,350,100,20); platforms.add(e);
-      Platform f = new Platform(width-30-100,450,100,20); platforms.add(f);
-  
-      //middle rectangles
-      Platform g = new Platform(200,250,600,20); platforms.add(g);
-      Platform h = new Platform(200,350,600,20); platforms.add(h);
-      Platform i = new Platform(200,450,600,20); platforms.add(i);
+      Enemy e1 = new Enemy(width/2-100,150); enemies.add(e1);
+      Enemy e2 = new Enemy(width/2+100,150); enemies.add(e2);
+      Enemy e3 = new Enemy(width/2-200,350); enemies.add(e3);
+      Enemy e4 = new Enemy(width/2+200,450); enemies.add(e4);
+      Enemy e5 = new Enemy(width/2,450); enemies.add(e5);
+     //top to bottom, left to right rectangles
+      Platform a = new Platform(width/2-100,150,200,20); platforms.add(a);
+      Platform b = new Platform(width/2-250,250,200,20); platforms.add(b);
+      Platform c = new Platform(width/2+100,250,200,20); platforms.add(c);
+      Platform d = new Platform(width/2-350,350,700,20); platforms.add(d);
+      Platform e = new Platform(width/2-400,450,200,20); platforms.add(e);
+      Platform f = new Platform(width/2-100,450,200,20); platforms.add(f);
+      Platform g = new Platform(width/2+200,450,200,20); platforms.add(g);
     }
   }
 }
