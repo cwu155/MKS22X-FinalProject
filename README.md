@@ -9,13 +9,14 @@
 ```
 git clone git@github.com:cwu155/MKS22X-FinalProject.git
 ```
-
+2. Open the Sketch folder in Processing.
+3. Run.
 ---
 
 ### **Bugs**
-- Bubble -> enemy -> food only works for 1 enemy? For multiple enemies, they all turn into food when one enemy is hit.
-- Can't add new levels
--
+- Jump
+- Bubbles *should* disappear when it hits an enemy.
+- Player can shoot bubble beams
 
 ---
 
@@ -84,3 +85,7 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 - T: Fixed bubble movement (restricted to inside map)
 
 #### 6/4/19
+- T: Fixed bubble movement (again)
+- T: Fixed player movement (cannot hug the wall)
+- T: Bubbles + player cannot move after losing (could still win if they moved)
+- T: Added levels!
