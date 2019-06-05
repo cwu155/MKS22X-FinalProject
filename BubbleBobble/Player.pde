@@ -4,7 +4,7 @@ int lives, count=0, upCount=0;
 PImage img;
 
 class Player implements Displayable, Moveable, Collideable{
- int score;
+ int score; float min; Platform toReturn;
 
 
  Player(float x, float y){
@@ -14,7 +14,8 @@ class Player implements Displayable, Moveable, Collideable{
    score = 0;
    lives = 3;
  }
-
+ 
+ //Accessor methods
  float getX(){
    return posX;
  }
@@ -23,21 +24,20 @@ class Player implements Displayable, Moveable, Collideable{
    return posY;
  }
  
- int getLives(){
-   return lives;
+ boolean getDir(){
+   return facingR;
  }
+
 
  void display(){
    image(img, posX, posY, 50, 50);
  }
-
+ 
+ //Checks to see if player is on ground
  boolean onGround(){
    return (posY == 530);
  }
  
- boolean getDir(){
-   return facingR;
- }
  void changeDir(boolean b){
    facingR = b;
  }
@@ -158,5 +158,17 @@ class Player implements Displayable, Moveable, Collideable{
  void removePoints(){
    score = 0;
  }
+ 
+ Platform topPlatform(){
+   min = 1000;
+   for (Platform p : platforms){
+     if (p.getCenterY() <= min){
+       min = p.getCenterY();
+       toReturn = p;
+     }
+   }
+   return toReturn;
+ }
+ 
 
 }

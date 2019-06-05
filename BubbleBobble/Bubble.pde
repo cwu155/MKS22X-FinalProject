@@ -1,33 +1,47 @@
 public static ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
 
-class Bubble implements Collideable{
+class Bubble implements Collideable {
   PImage bubble;
   float posX, posY, speed;
+  boolean show;
 
 Bubble(float x, float y, float s){
     posX = x;
     posY = y;
     speed = s;
-    bubble = loadImage("Images/bubble.jpg");
+    show = true;
 }
 
-  void display(){  
+ float getX(){
+   return posX;
+ }
+ 
+ float getY(){
+   return posY;
+ }
+
+  void display(){ 
+    if(show){
       fill(0,255,0);
-      ellipse(posX,posY,25,25);
+      ellipse(posX,posY,25,25); 
+    } 
   }
 
   void move(){
-    if(running){
-      touching();
-      //if within length of map, moves left or right
-      if(posX < width-30-12.5 && posX > 30+12.5){
-        posX += speed;
-      }else{
-        //else move up
-        posY -= abs(speed);
+    if (show){
+      if(running){
+        touching();
+        //if within length of map, moves left or right
+        if(posX < width-30-12.5 && posX > 30+12.5){
+          posX += speed;
+        }else{
+          //else move up
+          posY -= abs(speed);
+        }
       }
-    }
   }
+  }
+  
   
   boolean touching(){
    for(Enemy e: enemies){
@@ -38,6 +52,7 @@ Bubble(float x, float y, float s){
         this.posY - 25 < e.getY() + 50){
         e.changeHit(true);
         e.hitEnemy();
+        show = false;
         return true;
        }
     }

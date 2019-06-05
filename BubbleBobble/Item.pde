@@ -1,5 +1,5 @@
 public static ArrayList<Item> items = new ArrayList<Item>();
-public static int[] values = {10,10,10,10,10,10,10,10,10,10,50,50,50,50,50,100,100,100,250,250,500,500,1000};
+public static int[] pointVals = {1,10,10,10,10,10,10,10,10,10,10,50,50,50,50,50,100,100,100,250,250,500,500,1000};
 
 class Item implements Displayable{
   int posX, posY, points;
@@ -24,14 +24,20 @@ class Item implements Displayable{
         image(orange,posX,posY);
       }else if(points == 500){
         image(watermelon,posX,posY);
-      }else{
+      }else if(points == 1000){
         image(frenchfries,posX,posY);
+      }else{
+        image(extend,posX,posY);
       }
     }
   }
   
   void hitItem(){
-    a.addPoints(points);
+    if(getPoints() == 1){
+      lives += 1;
+    } else {
+      a.addPoints(points);
+    }
     items.remove(this);
     itemHit = true;
   }
@@ -42,5 +48,9 @@ class Item implements Displayable{
   
   int getY(){
     return posY;
+  }
+  
+  int getPoints(){
+    return points;
   }
 }

@@ -29,16 +29,16 @@ Bubble(float x, float y, float s){
 
   void move(){
     if (show){
-    if(running){
-      touching();
-      //if within length of map, moves left or right
-      if(posX < width-30-12.5 && posX > 30+12.5){
-        posX += speed;
-      }else{
-        //else move up
-        posY -= abs(speed);
+      if(running){
+        touching();
+        //if within length of map, moves left or right
+        if(posX < width-30-12.5 && posX > 30+12.5){
+          posX += speed;
+        }else{
+          //else move up
+          posY -= abs(speed);
+        }
       }
-    }
   }
   }
   

@@ -1,7 +1,6 @@
 boolean running;
 class Game implements Displayable{
   int count=0;
-  
 
   Game(){
     running = true;

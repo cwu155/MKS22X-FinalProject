@@ -10,6 +10,13 @@ class Enemy implements Displayable, Moveable{
   Enemy(float x, float y){
     location = new PVector(x,y);
     randSpeed = (float)Math.random() * (4+1) + -2;
+    if (abs(randSpeed) < 1.5){
+      if (randSpeed > 0){
+        randSpeed += 1;
+      } else {
+        randSpeed -= 1;
+      }
+    }
     velocity = new PVector(randSpeed,randSpeed);
     if (randSpeed > 0){facingR = true;} else {facingR = false;}
     lastTurn = millis();
@@ -35,6 +42,7 @@ class Enemy implements Displayable, Moveable{
   boolean onGround(){
    return (location.y >= 525);
   }
+
   
   void display(){
     if(!enemyHit){
@@ -45,12 +53,12 @@ class Enemy implements Displayable, Moveable{
       }
       image(enemy, location.x, location.y, 50, 50);   
     }
-  }
+  }    
   
   void update(){
-      float randTime = (float)Math.random() * ((12-5) + 1) + 5;
+      float randTime = (float)Math.random() * ((10-2) + 1) + 2;
       if (millis() - lastTurn >= randTime * 1000 * abs(randSpeed)){
-        if(touchPlatform && location.x <= 200){
+        if(touchPlatform && location.y > a.topPlatform().getY()){
           velocity.y = -70;
         }
         if (onGround()) velocity.y = -100;
@@ -89,13 +97,12 @@ class Enemy implements Displayable, Moveable{
      update();
      
      location.x += velocity.x;
-     //println("Location: " + location.y);
      location.y += velocity.y;
      
   }
   
   void hitEnemy(){
-    Item food = new Item((int)this.getX(),(int)this.getY(),values[(int)random(values.length)]);
+    Item food = new Item((int)this.getX(),(int)this.getY(),pointVals[(int)random(pointVals.length)]);
     items.add(food);
     enemies.remove(this);
   }

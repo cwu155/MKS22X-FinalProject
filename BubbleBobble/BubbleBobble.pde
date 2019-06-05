@@ -2,9 +2,9 @@ Game g;
 Player a;
 Bubble b;
 PImage bub;
-PImage radish, corn, friedegg, orange, watermelon, frenchfries;
+PImage radish, corn, friedegg, orange, watermelon, frenchfries, extend;
 boolean menu = true;
-int bubbleCount=0;
+int bubbleCount = 0;
 
 void keyPressed(){
   if(running){
@@ -48,6 +48,7 @@ void keyPressed(){
       platforms.clear();
       items.clear();
       a.removePoints();
+      
       Enemy e1 = new Enemy(width/2,60); enemies.add(e1);
       Enemy e2 = new Enemy(width/2,60); enemies.add(e2);
       Enemy e3 = new Enemy(width/2,60); enemies.add(e3);
@@ -137,12 +138,14 @@ void setup(){
   orange = loadImage("../BubbleBobble/Images/orange.png");
   watermelon = loadImage("../BubbleBobble/Images/watermelon.png");
   frenchfries = loadImage("../BubbleBobble/Images/fries.png");
+  extend = loadImage("../BubbleBobble/Images/extend.png");
   radish.resize(50,50);
   corn.resize(50,50);
   friedegg.resize(50,50);
   orange.resize(50,50);
   watermelon.resize(50,50);
   frenchfries.resize(50,50);
+  extend.resize(50,50);
   g = new Game();
   a = new Player(30,height-50-20);
   Enemy e1 = new Enemy(width/2,60); enemies.add(e1);
@@ -161,7 +164,6 @@ void draw(){
   for (Bubble b : bubbles){
      b.display(); 
      b.move();
-     b.touching();
   }
   for (Enemy e : enemies){
      e.display(); 
@@ -188,28 +190,37 @@ void draw(){
   text("Level: "+g.level,width-30,35);*/
   textAlign(CENTER);
   text("Time: "+g.getTime(),width/2,35);
+
+  //Displays the number of lives
+  int holder = 40;
   fill(255,0,0);
-  rect(40,60,20,20);
-  rect(65,60,20,20);
-  rect(90,60,20,20);
-  if(lives==2){
-    fill(0,0,0);
-    rect(90,60,20,20);
- //   a.setXY(30,height-50-20);
+  for (int i = 0; i < lives; i++){
+    rect(holder,60,20,20);
+    holder += 25;
   }
-  if(lives==1){
-    fill(0,0,0);
-    rect(65,60,20,20);
-    rect(90,60,20,20);
-  //  a.setXY(30,height-50-20);
-  }
-  if(lives<=0){
-    fill(0,0,0);
-    rect(40,60,20,20);
-    rect(65,60,20,20);
-    rect(90,60,20,20);
- //   a.setXY(30,height-50-20);
-  }
+  
+ // if(lives==2){
+ //   fill(0,0,0);
+ //   rect(90,60,20,20);
+ ////   a.setXY(30,height-50-20);
+ // }
+ // if(lives==1){
+ //   fill(0,0,0);
+ //   rect(65,60,20,20);
+ //   rect(90,60,20,20);
+ // //  a.setXY(30,height-50-20);
+ // }
+ // if(lives<=0){
+ //   fill(0,0,0);
+ //   rect(40,60,20,20);
+ //   rect(65,60,20,20);
+ //   rect(90,60,20,20);
+ ////   a.setXY(30,height-50-20);
+ // }
+ // if (extraLife){
+ //   fill(0,0,0);
+ //   rect(115,60,20,20);
+ // }
   //Testing Purposes
  // textSize(20);
   //text("X: " + posX, 200, 35);
