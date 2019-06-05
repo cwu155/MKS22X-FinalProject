@@ -11,12 +11,10 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 ```
 2. Open the Sketch folder in Processing.
 
-3. Run. (directions are shown after running)
+3. Run BubbleBobble.pde. (directions are shown after running)
 ---
 
 ### **Bugs**
-- Jump
-- Bubbles *should* disappear when it hits an enemy.
 - Player can shoot bubble beams
 
 ---
@@ -73,9 +71,12 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 #### 5/30/19
 - T: Added random food item after hitting enemy with bubble
 - T: Added game end (when no enemies + no bubbles, since only 1 level right now)
+- C: Worked on enemy movement (enemy follows player)
 
 #### 5/31/19
 - T: Added health bars
+- C: Fixed enemy-bubble collision glitch (collision is better detected)
+- C: Fixed timing bug (the game doesn't get progressively slower now)
 
 #### 6/1/19
 
@@ -84,9 +85,12 @@ git clone git@github.com:cwu155/MKS22X-FinalProject.git
 
 #### 6/3/19
 - T: Fixed bubble movement (restricted to inside map)
+- C: Edited player movement (made it jump more smoothly?)
 
 #### 6/4/19
 - T: Fixed bubble movement (again)
 - T: Fixed player movement (cannot hug the wall)
 - T: Bubbles + player cannot move after losing (could still win if they moved)
 - T: Added levels and maps for level 2 and 3.
+- C: Adjusted code so that multiple enemies could be displayed on same level, changed enemy move()
+- C: Fixed bubble-enemy collision glitch (one bubble can't kill multiple enemies)
