@@ -116,7 +116,7 @@ class Player implements Displayable, Moveable, Collideable{
   }
  }
  
- boolean touching(){
+ boolean touching(){ //Is the player touching an item?
    for(Item i : items){
      if((abs(i.getX() - posX)) < 50 && (abs(i.getY() - posY)) < 25){
        i.hitItem();
@@ -126,14 +126,14 @@ class Player implements Displayable, Moveable, Collideable{
    return false;
  }
  
- boolean touchingE(){ //enemy
+ boolean touchingE(){ //Is the player touching an enemy?
    for(Enemy e : enemies){
      if((abs(e.getX() - posX)) < 50 && (abs(e.getY() - posY)) < 25){
        if(lives==3){
          lives=2;
        }
        count++;
-       if(count>100){
+       if(count>75){
          lives--;
          count = 0;
        }

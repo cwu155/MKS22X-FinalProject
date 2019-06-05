@@ -9,12 +9,12 @@ class Game implements Displayable{
   }
   void display(){
 
-    //if(!running){
-    //  count++;
-    //  if(count > 900){ //ends after 900 frames which is ~15s
-    //    System.exit(0);
-    //  }
-    //}
+    if(!running){
+      count++;
+      if(count > 900){ //ends after 900 frames which is ~15s
+        System.exit(0);
+      }
+    }
     
     background(255,192,203);
     fill(0,0,0);
@@ -27,8 +27,12 @@ class Game implements Displayable{
     if(enemies.size() == 0 && items.size() == 0){
         //running = false;
         fill((int)random(256),(int)random(256),(int)random(256));
-        textSize(50);
-        text("You win!",width/2,150);
+        textSize(40);
+        if (level.equals("3")){
+          text("You win!",width/2,150);
+        } else {
+          text("Next level!", width/2, 150);
+        }
     }
     
     //If Bub has lost all his lives!

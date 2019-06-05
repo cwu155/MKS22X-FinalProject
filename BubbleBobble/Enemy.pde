@@ -19,7 +19,6 @@ class Enemy implements Displayable, Moveable{
     }
     velocity = new PVector(randSpeed,randSpeed);
     if (randSpeed > 0){facingR = true;} else {facingR = false;} //Determines whether enemy is facing left or right
-    //lastTurn = millis();
     enemyHit = false; //Enemy has not been hit by a bubble yet
   }
   
@@ -58,16 +57,15 @@ class Enemy implements Displayable, Moveable{
   
   //Makes the enemy jump every (random #) of seconds
   void update(){
-      float randTime = (float)Math.random() * ((10-2) + 1) + 2;
-      if (millis() - lastTurn >= randTime * 1000 * abs(randSpeed)){
-        if(touchPlatform && location.y > a.topPlatform().getY()){
-          velocity.y = -70;
-        }
-        if (onGround()) velocity.y = -100;
+      float randTime = (float)Math.random() * ((10-4) + 1) + 4;
+      if (millis() - lastTurn >= randTime * 1000){
+          velocity.y -= 120;
+          velocity.x *= -1;
+        //if (onGround()) velocity.y = -100;
         lastTurn = millis();
       }
   }
-    
+    //&& location.y > a.topPlatform().getY()
   
   void move(){
     //Checks to see if enemy is touching any platform
