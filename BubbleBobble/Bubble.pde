@@ -1,12 +1,14 @@
 public static ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
 
 class Bubble implements Collideable{
+  PImage bubble;
   float posX, posY, speed;
 
 Bubble(float x, float y, float s){
     posX = x;
     posY = y;
     speed = s;
+    bubble = loadImage("Images/bubble.jpg");
 }
 
   void display(){  

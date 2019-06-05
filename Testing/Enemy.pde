@@ -95,7 +95,9 @@ class Enemy implements Displayable, Moveable{
   }
   
   void hitEnemy(){
-    Item food = new Item((int)this.getX(),(int)this.getY(),values[(int)random(values.length)]);
+    Item food = new Item((int)this.getX(),
+                         (int)this.getY(),
+                          pointVals[(int)random(pointVals.length)]);
     items.add(food);
     enemies.remove(this);
   }

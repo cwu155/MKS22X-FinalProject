@@ -43,8 +43,6 @@ class Player implements Displayable, Moveable, Collideable{
  }
 
  void move(){
-   touching();
-   touchingE();
    //Checks to see if Bub is touching any platform
    for (Platform p : platforms){
       touchingPlatform(p);
@@ -84,13 +82,13 @@ class Player implements Displayable, Moveable, Collideable{
    //Trigger jump
     if (up){
         speedY = -8;  //speedY determines how quick Bub's jump is
-        upCount++;
-        if(upCount>60){
-          speedY = 9;
-          if(touching){
-            upCount = 0;
-          }
-        }
+        //upCount++;
+        //if(upCount>60){
+        //  speedY = 9;
+        //  if(touching){
+        //    upCount = 0;
+        //  }
+        //}
      }
    
    //Change y position

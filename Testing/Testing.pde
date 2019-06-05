@@ -1,9 +1,10 @@
 Game g;
 Player a;
 Bubble b;
-PImage radish, corn, friedegg, orange, watermelon, frenchfries;
+PImage bub;
+PImage radish, corn, friedegg, orange, watermelon, frenchfries, extend;
 boolean menu = true;
-int bubbleCount = 0;
+int bubbleCount=0;
 
 void keyPressed(){
   if(running){
@@ -39,102 +40,18 @@ void keyPressed(){
     if(keyCode == 32){ //space
       spawn();
     }
-  }    
-}
-
-void keyReleased(){
-    switch (keyCode){
-    case 38://up
-      up = false;
-    }
-}
-
-void setup(){
-  size(1000,600);
-  background(255);
-  radish = loadImage("../BubbleBobble/Images/radish.png");
-  corn = loadImage("../BubbleBobble/Images/corn.png");
-  friedegg = loadImage("../BubbleBobble/Images/egg.png");
-  orange = loadImage("../BubbleBobble/Images/orange.png");
-  watermelon = loadImage("../BubbleBobble/Images/watermelon.png");
-  frenchfries = loadImage("../BubbleBobble/Images/fries.png");
-  radish.resize(50,50);
-  corn.resize(50,50);
-  friedegg.resize(50,50);
-  orange.resize(50,50);
-  watermelon.resize(50,50);
-  frenchfries.resize(50,50);
-  g = new Game();
-  a = new Player(30,height-50-20);
-  Enemy e1 = new Enemy(width/2,60); enemies.add(e1);
-  Platform main = new Platform(width/2-100,height/2,200,20); platforms.add(main);
-}
-
-void draw(){
-  
-  g.display();
-  for(Platform p : platforms){
-    p.display();
-  }
-  a.display();
-  a.move();
-  
-  for (Bubble b : bubbles){
-     b.display(); 
-     b.move();
-     b.touching();
-  }
-  for (Enemy e : enemies){
-     e.display(); 
-     e.move();
-  }
-  for(Item i : items){
-    i.display();
-  }
-  
-  if(menu){
-    fill(255,192,203);
-    textSize(25);
-    text("Welcome to Bubble Bobble!",width/2,height/2-60);
-    textSize(15);
-    text("To play, press the spacebar to blow a bubble and the arrow keys to move your dragon",width/2,height/2+60);
-    text("Use the number keys to switch between levels",width/2,height/2+100);
-    text("Your objective is to hit the enemies with the bubbles and collect the food items left behind for points",width/2,height/2+140);
-    text("You only have 3 lives. Have fun!",width/2,height/2+180);
-  }
-  
-  if(level == 1){
+    
+    if(key == '1'){
       menu = false;
-      enemies.clear(); 
+      enemies.clear();
       bubbles.clear();
       platforms.clear();
       items.clear();
       a.removePoints();
       
-      g.display();
-  for(Platform p : platforms){
-    p.display();
-  }
-  a.display();
-  a.move();
-  
-  for (Bubble b : bubbles){
-     b.display(); 
-     b.move();
-     b.touching();
-  }
-  for (Enemy e : enemies){
-     e.display(); 
-     e.move();
-  }
-  for(Item i : items){
-    i.display();
-  }
-      
       Enemy e1 = new Enemy(width/2,60); enemies.add(e1);
       Enemy e2 = new Enemy(width/2,60); enemies.add(e2);
       Enemy e3 = new Enemy(width/2,60); enemies.add(e3);
-      
       //left rectangles
       Platform a = new Platform(30,250,100,20); platforms.add(a);
       Platform b = new Platform(30,350,100,20); platforms.add(b);
@@ -150,8 +67,7 @@ void draw(){
       Platform h = new Platform(200,350,600,20); platforms.add(h);
       Platform i = new Platform(200,450,600,20); platforms.add(i);
     }
-    
-    if(level == 2){
+    if(key == '2'){
       menu = false;
       enemies.clear();
       bubbles.clear();
@@ -172,7 +88,7 @@ void draw(){
       Platform f = new Platform(width/2-100,450,200,20); platforms.add(f);
       Platform g = new Platform(width/2+200,450,200,20); platforms.add(g);
     }
-    if(level == 3){
+    if(key == '3'){
       menu = false;
       enemies.clear();
       bubbles.clear();
@@ -199,9 +115,74 @@ void draw(){
       Platform i = new Platform(100,450,250,20); platforms.add(i);
       Platform j = new Platform(1000-250-100,450,250,20); platforms.add(j);
       Platform k = new Platform(width/2-50,450,100,20); platforms.add(k);
+      
+    //  y = 450
     }
-  
-  
+  }
+}
+
+void keyReleased(){
+    switch (keyCode){
+    case 38://up
+      up = false;
+    }
+}
+
+void setup(){
+  size(1000,600);
+  background(255);
+  bub = loadImage("../BubbleBobble/Images/bubblun.png");
+  radish = loadImage("../BubbleBobble/Images/radish.png");
+  corn = loadImage("../BubbleBobble/Images/corn.png");
+  friedegg = loadImage("../BubbleBobble/Images/egg.png");
+  orange = loadImage("../BubbleBobble/Images/orange.png");
+  watermelon = loadImage("../BubbleBobble/Images/watermelon.png");
+  frenchfries = loadImage("../BubbleBobble/Images/fries.png");
+  extend = loadImage("../BubbleBobble/Images/extend.png");
+  radish.resize(50,50);
+  corn.resize(50,50);
+  friedegg.resize(50,50);
+  orange.resize(50,50);
+  watermelon.resize(50,50);
+  frenchfries.resize(50,50);
+  extend.resize(50,50);
+  g = new Game();
+  a = new Player(30,height-50-20);
+  Enemy e1 = new Enemy(width/2,60); enemies.add(e1);
+  Platform a = new Platform(width/2-100,height/2,200,20); platforms.add(a);
+}
+
+void draw(){
+  g.display();
+  for(Platform p : platforms){
+    p.display();
+  }
+  a.display();
+  a.move();
+  a.touching();
+  a.touchingE();
+  for (Bubble b : bubbles){
+     b.display(); 
+     b.move();
+     b.touching();
+  }
+  for (Enemy e : enemies){
+     e.display(); 
+     e.move();
+  }
+  for(Item i : items){
+    i.display();
+  }
+  if(menu){
+    fill(255,192,203);
+    textSize(25);
+    text("Welcome to Bubble Bobble!",width/2,height/2-60);
+    textSize(15);
+    text("To play, press the spacebar to blow a bubble and the arrow keys to move your dragon",width/2,height/2+60);
+    text("Use the number keys to switch between levels",width/2,height/2+100);
+    text("Your objective is to hit the enemies with the bubbles and collect the food items left behind for points",width/2,height/2+140);
+    text("You only have 3 lives. Have fun!",width/2,height/2+180);
+  }
   fill(0,0,0);
   textSize(25);
   textAlign(LEFT);
@@ -210,28 +191,36 @@ void draw(){
   text("Level: "+g.level,width-30,35);*/
   textAlign(CENTER);
   text("Time: "+g.getTime(),width/2,35);
+  
+  int holder = 40;
   fill(255,0,0);
-  rect(40,60,20,20);
-  rect(65,60,20,20);
-  rect(90,60,20,20);
-  if(lives==2){
-    fill(0,0,0);
-    rect(90,60,20,20);
- //   a.setXY(30,height-50-20);
+  for (int i = 0; i < lives; i++){
+    rect(holder,60,20,20);
+    holder += 25;
   }
-  if(lives==1){
-    fill(0,0,0);
-    rect(65,60,20,20);
-    rect(90,60,20,20);
-  //  a.setXY(30,height-50-20);
-  }
-  if(lives<=0){
-    fill(0,0,0);
-    rect(40,60,20,20);
-    rect(65,60,20,20);
-    rect(90,60,20,20);
- //   a.setXY(30,height-50-20);
-  }
+  
+ // if(lives==2){
+ //   fill(0,0,0);
+ //   rect(90,60,20,20);
+ ////   a.setXY(30,height-50-20);
+ // }
+ // if(lives==1){
+ //   fill(0,0,0);
+ //   rect(65,60,20,20);
+ //   rect(90,60,20,20);
+ // //  a.setXY(30,height-50-20);
+ // }
+ // if(lives<=0){
+ //   fill(0,0,0);
+ //   rect(40,60,20,20);
+ //   rect(65,60,20,20);
+ //   rect(90,60,20,20);
+ ////   a.setXY(30,height-50-20);
+ // }
+ // if (extraLife){
+ //   fill(0,0,0);
+ //   rect(115,60,20,20);
+ // }
   //Testing Purposes
  // textSize(20);
   //text("X: " + posX, 200, 35);
