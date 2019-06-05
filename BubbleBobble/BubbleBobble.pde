@@ -1,7 +1,7 @@
 Game g;
 Player a;
 Bubble b;
-PImage bub, ene;
+PImage bub;
 PImage radish, corn, friedegg, orange, watermelon, frenchfries;
 ArrayList<Displayable> displayMe;
 ArrayList<Moveable> moveMe;
@@ -13,10 +13,13 @@ void keyPressed(){
     if(posX <= 915){ // 1000-60-25 (half of bub)
       posX += speedX;
     }
-    img = loadImage("Images/bubblun.png");
+    img = loadImage("../BubbleBobble/Images/bubblun.png");
     right = true;
+<<<<<<< HEAD
     left = false;
     a.changeDir(true);
+=======
+>>>>>>> 09b7833540d42e567b9206fdeb957447979cc598
   }
   
   if (keyCode == LEFT){ //move left
@@ -26,8 +29,11 @@ void keyPressed(){
     }
     img = loadImage("../BubbleBobble/Images/bubblunReverse.png");
     right = false;
+<<<<<<< HEAD
     left = true;
     a.changeDir(false);
+=======
+>>>>>>> 09b7833540d42e567b9206fdeb957447979cc598
   }
   
   if (keyCode == UP){ //trigger jump 
@@ -44,29 +50,21 @@ void keyPressed(){
 
 void keyReleased(){
     switch (keyCode){
-    case 37:
-      left = false;
-    
     case 38://up
       up = false;
-      
-    case 39:
-      right = false;
     }
-   
 }
 
 void setup(){
   size(1000,600);
   background(255);
-  bub = loadImage("Images/bubblun.png");
-  ene = loadImage("Images/enemy1.gif");
-  radish = loadImage("Images/radish.png");
-  corn = loadImage("Images/corn.png");
-  friedegg = loadImage("Images/egg.png");
-  orange = loadImage("Images/orange.png");
-  watermelon = loadImage("Images/watermelon.png");
-  frenchfries = loadImage("Images/fries.png");
+  bub = loadImage("../BubbleBobble/Images/bubblun.png");
+  radish = loadImage("../BubbleBobble/Images/radish.png");
+  corn = loadImage("../BubbleBobble/Images/corn.png");
+  friedegg = loadImage("../BubbleBobble/Images/egg.png");
+  orange = loadImage("../BubbleBobble/Images/orange.png");
+  watermelon = loadImage("../BubbleBobble/Images/watermelon.png");
+  frenchfries = loadImage("../BubbleBobble/Images/fries.png");
   radish.resize(50,50);
   corn.resize(50,50);
   friedegg.resize(50,50);
@@ -75,11 +73,18 @@ void setup(){
   frenchfries.resize(50,50);
   g = new Game();
   a = new Player(30,height-50-20);
+  
   if(g.level == 1){
+<<<<<<< HEAD
       Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
       Enemy e2 = new Enemy(width/2,250,ene); enemies.add(e2);
     //  Enemy e3 = new Enemy(width/2,450,ene); enemies.add(e3);
+=======
+>>>>>>> 09b7833540d42e567b9206fdeb957447979cc598
     
+    Enemy e1 = new Enemy(width/2,60); enemies.add(e1);
+    Enemy e2 = new Enemy(width/2,60); enemies.add(e2);
+    Enemy e3 = new Enemy(width/2,60); enemies.add(e3);
       //left rectangles
       Platform a = new Platform(30,250,100,20); platforms.add(a);
       Platform b = new Platform(30,350,100,20); platforms.add(b);
@@ -95,25 +100,6 @@ void setup(){
       Platform h = new Platform(200,350,600,20); platforms.add(h);
       Platform i = new Platform(200,450,600,20); platforms.add(i);
   }
-  if(g.level == 2){
-    Enemy e1 = new Enemy(width/2,60,ene); enemies.add(e1);
-    Enemy e2 = new Enemy(width/2,250,ene); enemies.add(e2);
-    Enemy e3 = new Enemy(width/2,450,ene); enemies.add(e3);
-   //left rectangles
-    Platform a = new Platform(30,250,100,20); platforms.add(a);
-    Platform b = new Platform(30,350,100,20); platforms.add(b);
-    Platform c = new Platform(30,450,100,20); platforms.add(c);
-
-    //right rectangles
-    Platform d = new Platform(width-30-100,250,100,20); platforms.add(d);
-    Platform e = new Platform(width-30-100,350,100,20); platforms.add(e);
-    Platform f = new Platform(width-30-100,450,100,20); platforms.add(f);
-
-    //middle rectangles
-    Platform g = new Platform(200,250,600,20); platforms.add(g);
-    Platform h = new Platform(200,350,600,20); platforms.add(h);
-    Platform i = new Platform(200,450,600,20); platforms.add(i);
-  }
 }
 
 void draw(){
@@ -128,7 +114,7 @@ void draw(){
   for (Bubble b : bubbles){
      b.display(); 
      b.move();
-     b.touching();
+     //b.touching();
   }
   for (Enemy e : enemies){
      e.display(); 
@@ -146,8 +132,8 @@ void draw(){
   text("Level: "+g.level,width-30,35);
   textAlign(CENTER);
   text("Time: "+g.getTime(),width/2,35);
-  fill(255,0,0); //fill all 3 as red
-  rect(40,60,20,20); //then fill red boxes as black when a life is lost
+  fill(255,0,0);
+  rect(40,60,20,20);
   rect(65,60,20,20);
   rect(90,60,20,20);
   if(lives==2){
@@ -169,9 +155,9 @@ void draw(){
  //   a.setXY(30,height-50-20);
   }
   //Testing Purposes
-  textSize(20);
-  text("X: " + posX, 200, 35);
-  text("Y: " + posY, 300, 35);
+  //textSize(20);
+  //text("X: " + posX, 200, 35);
+  //text("Y: " + posY, 300, 35);
 }
 
 interface Displayable{

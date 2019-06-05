@@ -1,19 +1,20 @@
 public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-boolean enemyHit;
+//boolean enemyHit;
 
 class Enemy implements Displayable, Moveable{
-  float eposX, eposY, espeedX, espeedY, randSpeed;
-  long lastTurn;
   PVector location, velocity;
-  boolean touchPlatform, facingR;
+  float randSpeed;
+  int lastTurn;
+  boolean touchPlatform, facingR, enemyHit;
   PImage enemy;
 
-  Enemy(float x, float y, PImage enemy){
+  Enemy(float x, float y){
     location = new PVector(x,y);
-    velocity = new PVector(-2,2);
-    facingR = true;
-    enemy = loadImage("../BubbleBobble/Images/enemy1.gif");
-    randSpeed = (float)Math.random() * (2);
+    randSpeed = (float)Math.random() * (4+1) + -2;
+    velocity = new PVector(randSpeed,randSpeed);
+    if (randSpeed > 0){facingR = true;} else {facingR = false;}
+    lastTurn = millis();
+    enemyHit = false;
   }
   
   float getX(){
@@ -22,6 +23,14 @@ class Enemy implements Displayable, Moveable{
   
   float getY(){
     return location.y;
+  }
+  
+  void changeHit(Boolean hit){
+    enemyHit = hit;
+  }
+  
+  boolean enemyHit(){
+    return enemyHit;
   }
   
   boolean onGround(){
@@ -39,18 +48,19 @@ class Enemy implements Displayable, Moveable{
     }
   }
   
-  void jump(){ //unused for now
-    println("jump!");
-    lastTurn = System.currentTimeMillis();
-    if (System.currentTimeMillis() - lastTurn >= 100) {
-    velocity.y -= 8;
-    lastTurn = System.currentTimeMillis();
-    }  
-  }  
-  
+  void update(){
+      float randTime = (float)Math.random() * ((12-5) + 1) + 5;
+      if (millis() - lastTurn >= randTime * 1000 * abs(randSpeed)){
+        if(touchPlatform && location.x <= 200){
+          velocity.y = -70;
+        }
+        if (onGround()) velocity.y = -100;
+        lastTurn = millis();
+      }
+  }
+    
   
   void move(){
-
     //Checks to see if enemy is touching any platform
      for (Platform p : platforms){
         touchingPlatform(p);
@@ -64,29 +74,31 @@ class Enemy implements Displayable, Moveable{
      
      if (onGround()){
        velocity.y = 0;
-     }
+     }     
      
+     //Bounds
      if (location.x > 915 || location.x < 40){
        velocity.x *= -1;
      }
+    
      
      //If not on a platform and not on the ground, drop!
      if (!touchPlatform && !onGround()){
        velocity.y = 5;
      }
      
-   
+     update();
+     
      location.x += velocity.x;
      //println("Location: " + location.y);
      location.y += velocity.y;
-      
+     
   }
   
   void hitEnemy(){
-    Item food = new Item((int)location.x,(int)location.y,values[(int)random(values.length)]);
+    Item food = new Item((int)this.getX(),(int)this.getY(),values[(int)random(values.length)]);
     items.add(food);
-    enemyHit = true;
-    enemies.remove(0);
+    enemies.remove(this);
   }
   
   void touchingPlatform(Platform p){
