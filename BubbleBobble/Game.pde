@@ -1,6 +1,8 @@
 boolean running;
+String level;
+
 class Game implements Displayable{
-  int count=0;
+  int count = 0;
 
   Game(){
     running = true;

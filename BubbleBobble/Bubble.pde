@@ -12,6 +12,7 @@ Bubble(float x, float y, float s){
     show = true;
 }
 
+//Accessor methods
  float getX(){
    return posX;
  }
@@ -42,6 +43,8 @@ Bubble(float x, float y, float s){
   }
   }
   
+  //If the bubble touches an ememy, make it disappear and make a call to hitEnemy() (Enemy class).
+  //hitEnemy() spawns a food item in place of the enemy.
   
   boolean touching(){
    for(Enemy e: enemies){

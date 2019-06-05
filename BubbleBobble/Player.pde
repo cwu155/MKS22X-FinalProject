@@ -41,7 +41,7 @@ class Player implements Displayable, Moveable, Collideable{
  void changeDir(boolean b){
    facingR = b;
  }
-
+ 
  void move(){
    //Checks to see if Bub is touching any platform
    for (Platform p : platforms){
@@ -82,16 +82,8 @@ class Player implements Displayable, Moveable, Collideable{
    //Trigger jump
     if (up){
         speedY = -8;  //speedY determines how quick Bub's jump is
-        //upCount++;
-        //if(upCount>60){
-        //  speedY = 9;
-        //  if(touching){
-        //    upCount = 0;
-        //  }
-        //}
-     }
+    }
    
-   //Change y position
    posY += speedY;
   }
  
@@ -152,13 +144,14 @@ class Player implements Displayable, Moveable, Collideable{
  }
  
  void addPoints(int p){
-   score+=p;
+   score += p;
  }
  
  void removePoints(){
    score = 0;
  }
  
+ //Returns the ycor of the center of the top platform of the level
  Platform topPlatform(){
    min = 1000;
    for (Platform p : platforms){

@@ -8,9 +8,9 @@ class Enemy implements Displayable, Moveable{
   PImage enemy;
 
   Enemy(float x, float y){
-    location = new PVector(x,y);
-    randSpeed = (float)Math.random() * (4+1) + -2;
-    if (abs(randSpeed) < 1.5){
+    location = new PVector(x,y); 
+    randSpeed = (float)Math.random() * (4+1) + -2; //Assigns enemy a random speed, if it's less than 1 make it faster
+    if (abs(randSpeed) < 1){
       if (randSpeed > 0){
         randSpeed += 1;
       } else {
@@ -18,11 +18,12 @@ class Enemy implements Displayable, Moveable{
       }
     }
     velocity = new PVector(randSpeed,randSpeed);
-    if (randSpeed > 0){facingR = true;} else {facingR = false;}
-    lastTurn = millis();
-    enemyHit = false;
+    if (randSpeed > 0){facingR = true;} else {facingR = false;} //Determines whether enemy is facing left or right
+    //lastTurn = millis();
+    enemyHit = false; //Enemy has not been hit by a bubble yet
   }
   
+  //Accessor methods
   float getX(){
     return location.x;
   }
@@ -55,6 +56,7 @@ class Enemy implements Displayable, Moveable{
     }
   }    
   
+  //Makes the enemy jump every (random #) of seconds
   void update(){
       float randTime = (float)Math.random() * ((10-2) + 1) + 2;
       if (millis() - lastTurn >= randTime * 1000 * abs(randSpeed)){
@@ -94,6 +96,7 @@ class Enemy implements Displayable, Moveable{
        velocity.y = 5;
      }
      
+     //Jump randomly
      update();
      
      location.x += velocity.x;
@@ -101,6 +104,7 @@ class Enemy implements Displayable, Moveable{
      
   }
   
+  //If the enemy is hit by a bubble (called in Bubble class), spawn an item and remove the enemy
   void hitEnemy(){
     Item food = new Item((int)this.getX(),(int)this.getY(),pointVals[(int)random(pointVals.length)]);
     items.add(food);
@@ -125,7 +129,7 @@ class Enemy implements Displayable, Moveable{
       
       if (overlapX >= overlapY){
         if (diffY <= 0){
-          location.y -= (overlapY + 2); //the +1 is for graphics idk
+          location.y -= (overlapY + 2); //the +2 is for graphics idk
           touchPlatform = true;
           
           //Testing purposes, makes the platform that enemy is on green

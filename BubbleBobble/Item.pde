@@ -11,6 +11,19 @@ class Item implements Displayable{
     points = p;
     itemHit = false;
   }
+  
+  //Accessor methods
+  int getX(){
+    return posX;
+  }
+  
+  int getY(){
+    return posY;
+  }
+  
+  int getPoints(){
+    return points;
+  }
 
   void display(){ //points determine the picture that will be displayed
     if(!itemHit){
@@ -33,7 +46,7 @@ class Item implements Displayable{
   }
   
   void hitItem(){
-    if(getPoints() == 1){
+    if(getPoints() == 1){ //Triggers the extend item, increases Bub's lives by 1
       lives += 1;
     } else {
       a.addPoints(points);
@@ -42,15 +55,4 @@ class Item implements Displayable{
     itemHit = true;
   }
   
-  int getX(){
-    return posX;
-  }
-  
-  int getY(){
-    return posY;
-  }
-  
-  int getPoints(){
-    return points;
-  }
 }
