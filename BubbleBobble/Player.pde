@@ -89,14 +89,6 @@ class Player implements Displayable, Moveable, Collideable{
             upCount = 0;
           }
         }
-        //if (right){
-        //  speedX = 2;
-        //} else {
-        //  speedX = -2;
-        //}
-        //if (posX <= 915 || posX >= 40){
-        //  posX += speedX;
-        //}
      }
    
    //Change y position

@@ -1,10 +1,9 @@
 float posX, posY, speedX, speedY;
 boolean left, right, up, touching, facingR = true;
-int lives;
+int lives, count=0, upCount=0;
 PImage img;
 
 class Player implements Displayable, Moveable, Collideable{
- ArrayList<Bubble> extendBubbles;
  int score;
 
 
@@ -14,7 +13,6 @@ class Player implements Displayable, Moveable, Collideable{
    posY = y;
    score = 0;
    lives = 3;
-   extendBubbles = new ArrayList<Bubble>();
  }
 
  float getX(){
@@ -27,11 +25,6 @@ class Player implements Displayable, Moveable, Collideable{
  
  int getLives(){
    return lives;
- }
- 
- void setXY(int x, int y){
-   posX = x;
-   posY = y;
  }
 
  void display(){
@@ -50,6 +43,8 @@ class Player implements Displayable, Moveable, Collideable{
  }
 
  void move(){
+   touching();
+   touchingE();
    //Checks to see if Bub is touching any platform
    for (Platform p : platforms){
       touchingPlatform(p);
@@ -87,15 +82,14 @@ class Player implements Displayable, Moveable, Collideable{
    
    
    //Trigger jump
-   if (up){
+    if (up){
         speedY = -8;  //speedY determines how quick Bub's jump is
-        if (right){
-          speedX = 2;
-        } else {
-          speedX = -2;
-        }
-        if (posX <= 915 || posX >= 40){
-          posX += speedX;
+        upCount++;
+        if(upCount>60){
+          speedY = 9;
+          if(touching){
+            upCount = 0;
+          }
         }
      }
    
@@ -125,7 +119,7 @@ class Player implements Displayable, Moveable, Collideable{
           touching = true;
           
           //Testing purposes, makes the platform that Bub is on red
-          p.changeColor(p);
+         // p.changeColor(p);
         }
       }
     }
@@ -145,7 +139,14 @@ class Player implements Displayable, Moveable, Collideable{
  boolean touchingE(){ //enemy
    for(Enemy e : enemies){
      if((abs(e.getX() - posX)) < 50 && (abs(e.getY() - posY)) < 25){
-       lives--;
+       if(lives==3){
+         lives=2;
+       }
+       count++;
+       if(count>100){
+         lives--;
+         count = 0;
+       }
        return true;
      }
    }
@@ -154,6 +155,10 @@ class Player implements Displayable, Moveable, Collideable{
  
  void addPoints(int p){
    score+=p;
+ }
+ 
+ void removePoints(){
+   score = 0;
  }
 
 }
