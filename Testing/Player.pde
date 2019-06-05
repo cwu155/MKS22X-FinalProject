@@ -4,7 +4,7 @@ int lives, count=0, upCount=0;
 PImage img;
 
 class Player implements Displayable, Moveable, Collideable{
- int score;
+ int score; float min; Platform toReturn;
 
 
  Player(float x, float y){
@@ -158,5 +158,17 @@ class Player implements Displayable, Moveable, Collideable{
  void removePoints(){
    score = 0;
  }
+ 
+ Platform topPlatform(){
+   min = 1000;
+   for (Platform p : platforms){
+     if (p.getCenterY() <= min){
+       min = p.getCenterY();
+       toReturn = p;
+     }
+   }
+   return toReturn;
+ }
+ 
 
 }

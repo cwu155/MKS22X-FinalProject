@@ -4,7 +4,7 @@ Bubble b;
 PImage bub;
 PImage radish, corn, friedegg, orange, watermelon, frenchfries, extend;
 boolean menu = true;
-int bubbleCount=0;
+int bubbleCount = 0;
 
 void keyPressed(){
   if(running){
@@ -164,7 +164,6 @@ void draw(){
   for (Bubble b : bubbles){
      b.display(); 
      b.move();
-     b.touching();
   }
   for (Enemy e : enemies){
      e.display(); 
@@ -191,7 +190,8 @@ void draw(){
   text("Level: "+g.level,width-30,35);*/
   textAlign(CENTER);
   text("Time: "+g.getTime(),width/2,35);
-  
+
+  //Displays the number of lives
   int holder = 40;
   fill(255,0,0);
   for (int i = 0; i < lives; i++){
